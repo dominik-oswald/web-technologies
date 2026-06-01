@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="GeoLens Magazine — stories from the edges of the world." />
+  <title>GeoLens — Earth, Science & Exploration</title>
+</head>
+
+<body>
+
+  <header>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <div class="masthead">
+      <a href="/" aria-label="GeoLens home">
+        <img src="assets/logo.svg" alt="GeoLens" width="160" height="40" />
+      </a>
+      <nav aria-label="Primary navigation">
+        <ul>
+          <li><a href="/science">Science</a></li>
+          <li><a href="/environment">Environment</a></li>
+          <li><a href="/exploration">Exploration</a></li>
+          <li><a href="/photography">Photography</a></li>
+          <li><a href="/archive">Archive</a></li>
+        </ul>
+      </nav>
+      <button type="button" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="visually-hidden">Open menu</span>
+        <span aria-hidden="true">☰</span>
+      </button>
+    </div>
+    <nav id="mobile-menu" aria-label="Mobile navigation" hidden>
+      <ul>
+        <li><a href="/science">Science</a></li>
+        <li><a href="/environment">Environment</a></li>
+        <li><a href="/exploration">Exploration</a></li>
+        <li><a href="/photography">Photography</a></li>
+        <li><a href="/archive">Archive</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+
+    <!-- Hero article -->
+    <article class="hero-article">
+      <figure>
+        <img src="assets/hero-glacier.jpg"
+          alt="A researcher stands at the edge of the Vatnajökull glacier in Iceland, dwarfed by a 40-metre wall of blue ice"
+          width="1600" height="900" loading="eager" srcset="assets/hero-glacier-400.jpg 400w,
+                  assets/hero-glacier-800.jpg 800w,
+                  assets/hero-glacier-1600.jpg 1600w" sizes="100vw" />
+        <figcaption>
+          Researcher Lena Magnusdóttir measures melt rates at Vatnajökull, Iceland's largest ice cap.
+          <small>Photograph by Arnar Sigurðsson, June 2026</small>
+        </figcaption>
+      </figure>
+      <div class="article-body">
+        <span class="category">Climate</span>
+        <h1>Iceland's Vanishing Giants</h1>
+        <p class="standfirst">
+          Vatnajökull has lost 12% of its volume in thirty years. Scientists warn
+          the glacier that powers a nation's imagination — and its hydroelectric grid —
+          could be unrecognisable within a generation.
+        </p>
+        <p>
+          <time datetime="2026-05-28">28 May 2026</time> &mdash;
+          At 04:30 on a white Icelandic morning, Lena Magnusdóttir drills a two-metre
+          core from ice that formed before the printing press was invented.
+        </p>
+        <a href="/articles/icelands-vanishing-giants" aria-label="Read full article: Iceland's Vanishing Giants">Read
+          the full story &rarr;</a>
+      </div>
+    </article>
+
+    <div class="content-grid">
+
+      <!-- Main article feed -->
+      <section aria-labelledby="latest-heading">
+        <h2 id="latest-heading">Latest Stories</h2>
+
+        <article>
+          <a href="/articles/deep-sea-coral">
+            <img src="assets/coral.jpg" alt="Pink and orange deep-sea coral polyps under UV light" width="640"
+              height="360" loading="lazy" />
+          </a>
+          <div class="article-meta">
+            <span class="category">Ocean</span>
+            <h3><a href="/articles/deep-sea-coral">The Coral Forest Nobody Knew Existed</a></h3>
+            <p>A reef the size of Manhattan was found 200 metres below the Pacific — in waters scientists had written
+              off as inhospitable.</p>
+            <footer>
+              <address>
+                By <a rel="author" href="/contributors/jamie-chen">Jamie Chen</a>
+              </address>
+              <time datetime="2026-05-21">21 May 2026</time>
+            </footer>
+          </div>
+        </article>
+
+        <article>
+          <a href="/articles/sahara-solar">
+            <img src="assets/sahara.jpg" alt="Rows of solar panels extending to the horizon across orange desert sand"
+              width="640" height="360" loading="lazy" />
+          </a>
+          <div class="article-meta">
+            <span class="category">Energy</span>
+            <h3><a href="/articles/sahara-solar">Wiring the Sun: Africa's Gigawatt Gamble</a></h3>
+            <p>Five nations are building the world's largest solar corridor across the Sahara. The science is solved.
+              The politics may not be.</p>
+            <footer>
+              <address>
+                By <a rel="author" href="/contributors/fatou-diallo">Fatou Diallo</a>
+              </address>
+              <time datetime="2026-05-14">14 May 2026</time>
+            </footer>
+          </div>
+        </article>
+
+        <article>
+          <a href="/articles/last-speakers">
+            <img src="assets/language.jpg" alt="An elderly woman writes symbols on a chalkboard in a small classroom"
+              width="640" height="360" loading="lazy" />
+          </a>
+          <div class="article-meta">
+            <span class="category">Culture</span>
+            <h3><a href="/articles/last-speakers">Last Speakers: Racing to Record the World's Dying Languages</a></h3>
+            <p>Of the 7,000 languages spoken today, half are expected to disappear by 2100. A new generation of
+              linguists is in a race against silence.</p>
+            <footer>
+              <address>
+                By <a rel="author" href="/contributors/kwame-asante">Kwame Asante</a>
+              </address>
+              <time datetime="2026-05-07">7 May 2026</time>
+            </footer>
+          </div>
+        </article>
+
+      </section>
+
+      <!-- Sidebar -->
+      <aside aria-label="Secondary content">
+
+        <section aria-labelledby="editor-picks-heading">
+          <h2 id="editor-picks-heading">Editor's Picks</h2>
+          <ol>
+            <li><a href="/articles/amazon-night-sounds">What the Amazon Sounds Like at 3am</a></li>
+            <li><a href="/articles/mars-soil">Can We Grow Food in Mars Soil?</a></li>
+            <li><a href="/articles/migration-data">The New Map of Human Migration</a></li>
+            <li><a href="/articles/deep-time">A Journey Into Deep Time</a></li>
+          </ol>
+        </section>
+
+        <section aria-labelledby="newsletter-heading">
+          <h2 id="newsletter-heading">Weekly Briefing</h2>
+          <p>Our editors pick five stories every Friday. No noise.</p>
+          <form action="/subscribe" method="post">
+            <label for="email-input">Your email address</label>
+            <input type="email" id="email-input" name="email" placeholder="you@example.com" autocomplete="email"
+              required />
+            <button type="submit">Subscribe</button>
+          </form>
+        </section>
+
+        <section aria-labelledby="topics-heading">
+          <h2 id="topics-heading">Browse by Topic</h2>
+          <ul>
+            <li><a href="/topic/climate">Climate</a></li>
+            <li><a href="/topic/ocean">Ocean</a></li>
+            <li><a href="/topic/space">Space</a></li>
+            <li><a href="/topic/wildlife">Wildlife</a></li>
+            <li><a href="/topic/archaeology">Archaeology</a></li>
+            <li><a href="/topic/indigenous">Indigenous Stories</a></li>
+          </ul>
+        </section>
+
+        <figure>
+          <blockquote cite="https://geolens.com/articles/deep-time">
+            <p>We speak of geological time as if it were abstract. Stand inside a billion-year-old cave and it stops
+              being abstract immediately.</p>
+          </blockquote>
+          <figcaption>
+            &mdash; Dr. Priya Nair, <cite><a href="/articles/deep-time">A Journey Into Deep Time</a></cite>
+          </figcaption>
+        </figure>
+
+      </aside>
+
+    </div><!-- .content-grid -->
+
+    <!-- Secondary feature band -->
+    <section class="photo-essay-band" aria-labelledby="photo-heading">
+      <h2 id="photo-heading">Photo Essay</h2>
+      <p class="section-intro">Twelve images. One vanishing way of life.</p>
+      <ol class="photo-grid" role="list">
+        <li>
+          <figure>
+            <img src="assets/nomad-01.jpg"
+              alt="A Mongolian herder dismantling a ger at dawn, steam rising from his breath in the cold air"
+              width="400" height="300" loading="lazy" />
+            <figcaption>The Darhad Valley, Mongolia. March 2026.</figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <img src="assets/nomad-02.jpg" alt="Two children leading a small herd of yaks across a frozen river"
+              width="400" height="300" loading="lazy" />
+            <figcaption>River crossing, Khövsgöl Province.</figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <img src="assets/nomad-03.jpg"
+              alt="Interior of a ger at night, lit by a single oil lamp, sleeping bags rolled in the corner" width="400"
+              height="300" loading="lazy" />
+            <figcaption>Inside the family ger, last night of the winter camp.</figcaption>
+          </figure>
+        </li>
+      </ol>
+      <a href="/photo-essays/mongolian-nomads">See all 12 photographs &rarr;</a>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+
+      <section aria-labelledby="about-footer-heading">
+        <h2 id="about-footer-heading">About GeoLens</h2>
+        <p>Independent science and exploration journalism since 1998. We are reader-supported and carry no advertising.
+        </p>
+      </section>
+
+      <nav aria-label="Footer navigation">
+        <h2>Explore</h2>
+        <ul>
+          <li><a href="/about">About us</a></li>
+          <li><a href="/contribute">Contribute</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/press">Press</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Legal">
+        <h2>Legal</h2>
+        <ul>
+          <li><a href="/privacy">Privacy policy</a></li>
+          <li><a href="/terms">Terms of use</a></li>
+          <li><a href="/cookies">Cookie settings</a></li>
+        </ul>
+      </nav>
+
+      <section aria-labelledby="social-heading">
+        <h2 id="social-heading">Follow</h2>
+        <ul>
+          <li><a href="https://instagram.com/geolens" rel="noopener noreferrer" target="_blank"
+              aria-label="GeoLens on Instagram">Instagram</a></li>
+          <li><a href="https://mastodon.social/@geolens" rel="noopener noreferrer" target="_blank"
+              aria-label="GeoLens on Mastodon">Mastodon</a></li>
+          <li><a href="https://youtube.com/geolens" rel="noopener noreferrer" target="_blank"
+              aria-label="GeoLens on YouTube">YouTube</a></li>
+        </ul>
+      </section>
+
+    </div>
+
+    <div class="footer-bottom">
+      <small>&copy; <time datetime="2026">2026</time> GeoLens Media. All rights reserved.</small>
+      <small>Built with care. <a href="/sustainability">Our carbon footprint &rarr;</a></small>
+    </div>
+  </footer>
+
+</body>
+
+</html>
