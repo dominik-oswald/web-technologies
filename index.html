@@ -2,147 +2,150 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Web Technologies Portfolio</title>
-	<style>
-		:root {
-			color-scheme: light;
-			font-family: Inter, system-ui, sans-serif;
-			line-height: 1.6;
-			background: #f7f8fb;
-			color: #111827;
-		}
-		* {
-			box-sizing: border-box;
-		}
-		body {
-			margin: 0;
-			min-height: 100vh;
-		}
-		.page-shell {
-			max-width: 1080px;
-			margin: 0 auto;
-			padding: 24px;
-		}
-		header {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			gap: 16px;
-			padding: 12px 0;
-		}
-		.brand {
-			margin: 0;
-			font-size: 1.2rem;
-			letter-spacing: 0.08em;
-			text-transform: uppercase;
-		}
-		nav a {
-			color: #2563eb;
-			text-decoration: none;
-			margin-left: 20px;
-		}
-		.hero {
-			padding: 48px 0 12px;
-		}
-		.hero h1 {
-			margin: 0 0 16px;
-			font-size: clamp(2.5rem, 4vw, 4rem);
-		}
-		.hero p {
-			margin: 0 0 24px;
-			max-width: 60ch;
-			color: #4b5563;
-		}
-		.projects {
-			display: grid;
-			gap: 20px;
-			grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-			margin: 40px 0;
-		}
-		.project-card {
-			background: #ffffff;
-			border: 1px solid #e5e7eb;
-			border-radius: 18px;
-			padding: 24px;
-			box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
-		}
-		.project-card h2 {
-			margin-top: 0;
-			margin-bottom: 12px;
-			font-size: 1.2rem;
-		}
-		.project-card p {
-			margin: 0 0 18px;
-			color: #475569;
-		}
-		.project-card a {
-			color: #1d4ed8;
-			font-weight: 600;
-			text-decoration: none;
-		}
-		footer {
-			padding: 24px 0 12px;
-			color: #6b7280;
-			border-top: 1px solid #e5e7eb;
-		}
-	</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Technologies</title>
+  <style>
+    :root {
+      font-family: Inter, system-ui, sans-serif;
+      color: #111;
+      background: #fff;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background: #fff;
+      color: #111;
+    }
+    .page-shell {
+      max-width: 840px;
+      margin: 0 auto;
+      padding: 32px 24px;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .brand {
+      margin: 0;
+      font-size: 1.1rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      font-size: 0.95rem;
+    }
+    .nav-links a {
+      color: #111;
+      text-decoration: none;
+    }
+    .hero h1 {
+      margin: 0 0 14px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.05;
+    }
+    .hero p {
+      margin: 0;
+      color: #444;
+      max-width: 44rem;
+    }
+    .section-title {
+      margin: 0 0 18px;
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #111;
+    }
+    .projects {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      border-top: 1px solid #111;
+    }
+    .project-item {
+      padding: 18px 0;
+      border-bottom: 1px solid #111;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .project-item:last-child {
+      border-bottom: none;
+    }
+    .project-item h2 {
+      margin: 0;
+      font-size: 1.1rem;
+    }
+    .project-item a {
+      color: #e5b700;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    footer {
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid #111;
+      color: #444;
+      font-size: 0.95rem;
+    }
+  </style>
 </head>
 
 <body>
-	<div class="page-shell">
-		<header>
-			<h1 class="brand">Web Technologies</h1>
-			<nav aria-label="Primary site navigation">
-				<a href="#projects">Projects</a>
-				<a href="#about">About</a>
-			</nav>
-		</header>
+  <div class="page-shell">
+    <header>
+      <h1 class="brand">Web Technologies</h1>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+      </nav>
+    </header>
 
-		<main>
-			<section class="hero">
-				<p class="eyebrow">Landing Page</p>
-				<h1>Showcasing HTML projects and study exercises.</h1>
-				<p>Welcome to the central portfolio page for your web-technologies repository. Explore the practice pages, exercises, and project demos from this collection.</p>
-			</section>
+    <main>
+      <section class="hero">
+        <h1>Simple HTML project hub.</h1>
+        <p>Open the exercises from this repository and review each page directly from one landing page.</p>
+      </section>
 
-			<section id="projects">
-				<h2>Projects</h2>
-				<div class="projects">
-					<article class="project-card">
-						<h2>Exercise 1 — Tomato Soup</h2>
-						<p>A recipe page with ingredients, steps, and a creative layout example.</p>
-						<a href="exersize-1.html">Open project</a>
-					</article>
-					<article class="project-card">
-						<h2>Exercise 3 — Magazine Landing</h2>
-						<p>A magazine landing page example with hero content, navigation, and editorial style layout.</p>
-						<a href="exersize-3.html">Open project</a>
-					</article>
-					<article class="project-card">
-						<h2>EX-5 — Tomato Soup Demo</h2>
-						<p>A recipe page with a fun interactive image and a striking visual presentation.</p>
-						<a href="EX-5/">Open project</a>
-					</article>
-					<article class="project-card">
-						<h2>EX-7b — Recipe Cards</h2>
-						<p>A simple CSS selectors exercise featuring recipe cards and content hierarchy.</p>
-						<a href="EX-7b/">Open project</a>
-					</article>
-				</div>
-			</section>
+      <section id="projects">
+        <h2 class="section-title">Projects</h2>
+        <ul class="projects">
+          <li class="project-item">
+            <h2>Exercise 1 — Tomato Soup</h2>
+            <a href="exersize-1.html">Open project</a>
+          </li>
+          <li class="project-item">
+            <h2>Exercise 3 — Magazine Landing</h2>
+            <a href="exersize-3.html">Open project</a>
+          </li>
+          <li class="project-item">
+            <h2>EX-5 — Tomato Soup Demo</h2>
+            <a href="EX-5/">Open project</a>
+          </li>
+          <li class="project-item">
+            <h2>EX-7b — Recipe Cards</h2>
+            <a href="EX-7b/">Open project</a>
+          </li>
+        </ul>
+      </section>
 
-			<section id="about">
-				<h2>About this page</h2>
-				<p>This landing page is designed as a project hub for the repository. It connects the existing exercise pages and gives visitors a clear starting point.</p>
-			</section>
-		</main>
+      <section id="about">
+        <h2 class="section-title">About</h2>
+        <p>This page is a simple index for the repository. It only shows the project links and keeps the design clean.</p>
+      </section>
+    </main>
 
-		<footer>
-			<p>Built with HTML and CSS. Navigate the repository projects using the links above.</p>
-		</footer>
-	</div>
+    <footer>
+      <p>Black, white, and yellow only.</p>
+    </footer>
+  </div>
 </body>
 
 </html>
