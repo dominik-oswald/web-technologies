@@ -1,0 +1,136 @@
+/* ============================================================
+   EXERCISE: Media Queries — Mobile First
+   ============================================================
+
+   STRUCTURE
+   ---------
+   1. Base styles      → mobile (no query needed)
+   2. min-width: 600px → tablet
+   3. min-width: 1024px → desktop
+   4. orientation      → landscape on a small screen
+
+   TO TEST
+   -------
+   Resize the viewport and watch your layout change.
+
+============================================================ */
+
+/* ── Base styles — mobile first ──────────────────────────── */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: sans-serif;
+  color: #222;
+}
+
+header {
+  background-color: #e809b8;
+  color: white;
+  text-align: center;
+
+  /* TODO 1: set a padding of 1.5rem on mobile */
+  padding: 1.5rem;
+}
+
+header h1 {
+  /* TODO 2: set font-size to 1.5rem on mobile */
+  font-size: 1.5rem;
+}
+
+header p {
+  margin-top: 0.25rem;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+main {
+  padding: 1rem;
+
+  /* TODO 3: on mobile, cards should stack in a single column.
+             set up a grid with 1 column.
+             HINT: display: grid + grid-template-columns */
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
+}
+
+.card {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.card h2 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* ── TODO 4: Tablet ──────────────────────────────────────────
+   When the screen is at least 600px wide:
+   - increase the header padding to 2rem
+   - increase the h1 font-size to 2rem
+   - switch the card grid to 2 columns
+*/
+
+@media only screen and (min-width: 600px) {
+  header {
+    padding: 2rem;
+    background-color: rgb(8, 207, 97);
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  main {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ── TODO 5: Desktop ─────────────────────────────────────────
+   When the screen is at least 1024px wide:
+   - switch the card grid to 3 columns
+   - limit the page to a max-width of 1100px and center it
+*/
+@media only screen and (min-width: 1024px) {
+  header {
+    background-color: rgb(244, 222, 24);
+  }
+  main {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  body {
+    max-width: 1100px;
+    margin: auto;
+  }
+}
+
+/* ── TODO 6: Orientation ─────────────────────────────────────
+   Write a media query that detects screen orientation.
+   When in landscape mode, change the header background to a different color.
+
+   HINT: https://developer.mozilla.org/en-US/docs/Web/CSS/@media/orientation
+*/
+
+@media screen and (max-height: 600px) and (orientation: landscape) {
+  header {
+    background-color: rgb(220, 105, 11);
+  }
+}
+
+@media screen and (max-width: 600px) and (orientation: portrait) {
+  header {
+    background-color: rgb(244, 222, 24);
+  }
+}
+
+@media screen and (max-width: 600px) and (orientation: portrait) {
+  header {
+    background-color: rgb(244, 24, 244);
+  }
+}
