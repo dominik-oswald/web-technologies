@@ -23,7 +23,7 @@ console.log(words[0].length);
 //         if true, update longest
 
 function findLongest(words) {
-  let longest = '';
+  let longest = ' ';
   for (let i = 0; i < words.length; i++) {
     if (words[i].length > longest.length) {
       longest = words[i];
