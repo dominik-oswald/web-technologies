@@ -25,6 +25,10 @@
   const esc = (s) =>
     String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
 
+  // Surround underscores with zero-width spaces so browsers can break there
+  // without leaving awkward trailing punctuation.
+  // Use this for visible titles only; keep `alt` text free of ZWSP for screen readers.
+  const insertBreaks = (s) => String(s ?? '').replace(/_/g, (m) => '\u200B' + m + '\u200B');
   const pbFile = (recordId, filename) =>
     `/api/files/projects/${recordId}/${filename}`;
 
@@ -62,6 +66,9 @@
 
   function buildCard(rec) {
     const catLabel  = CAT_LABELS[rec.select] ?? 'Work';
+    const rawTitle = rec.title ?? '';
+    const safeTitle = esc(rawTitle); // for attributes / screen readers
+    const breakTitle = insertBreaks(safeTitle); // visible title with break opportunities
     const files     = rec.gallery ?? [];
     const videoUrl  = rec.video ?? '';
     const isStack   = rec.layout === 'gallery' && files.length > 1;
@@ -90,20 +97,21 @@
         const src    = fileUrls[imgIdx] ?? fileUrls[0];
         const isTop  = i === sheetCount - 1;
         sheetsHTML  += `<div class="archive-stack__sheet" style="--z:${zIdx};${SHEET_STYLES[i]}">
-          <img loading="lazy" decoding="async" src="${esc(src)}" alt="${isTop ? esc(rec.title) : ''}" />
+          <img loading="lazy" decoding="async" src="${esc(src)}" alt="${isTop ? safeTitle : ''}" />
         </div>`;
       }
       mediaHTML = `<div class="archive-stack" aria-hidden="true">${sheetsHTML}</div>`;
 
     } else if (isVideo) {
       a.className = 'project-card';
-      const ytMatch = videoUrl.match(/(?:[?&]v=|youtu\.be\/)([A-Za-z0-9_-]{11})/);
+      const ytMatch = videoUrl.match(/(?:[?&]v=|youtu\.be\/|\/embed\/|\/shorts\/)([A-Za-z0-9_-]{11})/);
       const ytId = ytMatch ? ytMatch[1] : null;
       if (fileUrls.length) {
-        mediaHTML = `<img class="project-card__img" loading="lazy" decoding="async" src="${esc(fileUrls[0])}" alt="${esc(rec.title)}" />`;
+        mediaHTML = `<img class="project-card__img" loading="lazy" decoding="async" src="${esc(fileUrls[0])}" alt="${safeTitle}" />`;
       } else if (ytId) {
-        // maxresdefault (1280×720) preferred; browser falls back to hqdefault if unavailable
-        mediaHTML = `<img class="project-card__img" loading="lazy" decoding="async" src="https://img.youtube.com/vi/${ytId}/maxresdefault.jpg" alt="${esc(rec.title)}" onerror="this.src='https://img.youtube.com/vi/${ytId}/hqdefault.jpg'">`;
+        // maxresdefault (1280×720) when available; onload checks naturalWidth to detect the
+        // 120×90 "no HD thumbnail" placeholder YouTube returns instead of a 404, then falls back.
+        mediaHTML = `<img class="project-card__img" loading="lazy" decoding="async" src="https://img.youtube.com/vi/${ytId}/maxresdefault.jpg" alt="${safeTitle}" onload="if(this.naturalWidth<=120)this.src='https://img.youtube.com/vi/${ytId}/hqdefault.jpg'" onerror="this.src='https://img.youtube.com/vi/${ytId}/hqdefault.jpg'">`;
       } else if (videoUrl) {
         mediaHTML = `<video class="project-card__img" src="${esc(videoUrl)}" muted preload="metadata" playsinline></video>`;
       } else {
@@ -114,7 +122,7 @@
       // single-image or interaction card
       a.className = 'project-card';
       mediaHTML = fileUrls.length
-        ? `<img class="project-card__img" loading="lazy" decoding="async" src="${esc(fileUrls[0])}" alt="${esc(rec.title)}" />`
+        ? `<img class="project-card__img" loading="lazy" decoding="async" src="${esc(fileUrls[0])}" alt="${safeTitle}" />`
         : `<div class="project-card__placeholder">${esc(catLabel)}</div>`;
     }
 
@@ -122,11 +130,11 @@
       <div class="project-card__media">
         ${mediaHTML}
         <div class="project-card__overlay">
-          <span class="project-card__title">${esc(rec.title)}</span>
+          <span class="project-card__title">${breakTitle}</span>
           <span class="project-card__cat">${esc(catLabel)}</span>
         </div>
       </div>
-      <div class="project-card__meta"><span>${esc(rec.title)}</span></div>`;
+      <div class="project-card__meta"><span>${breakTitle}</span></div>`;
 
     const li = document.createElement('li');
     li.appendChild(a);

@@ -76,10 +76,12 @@
     root.querySelectorAll('.project-card').forEach((card) => {
       if (card._ytHoverInit) return;
       const videoUrl = card.dataset.galleryVideo || '';
-      const ytMatch = videoUrl.match(/(?:[?&]v=|youtu\.be\/)([A-Za-z0-9_-]{11})/);
+      // match regular YT, youtu.be, embed, AND /shorts/ URLs
+      const ytMatch = videoUrl.match(/(?:[?&]v=|youtu\.be\/|\/embed\/|\/shorts\/)([A-Za-z0-9_-]{11})/);
       if (!ytMatch) return;
       card._ytHoverInit = true;
       const ytId = ytMatch[1];
+      const isPortrait = videoUrl.includes('/shorts/');
       const tMatch = videoUrl.match(/[?&]t=(\d+)/);
       const startSec = tMatch ? parseInt(tMatch[1], 10) : 0;
       const embedSrc = `https://www.youtube.com/embed/${ytId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${ytId}&modestbranding=1&start=${startSec}`;
@@ -87,16 +89,20 @@
       if (!media) return;
 
       let frame = null;
+      let hoverTimer = null;
       card.addEventListener('mouseenter', () => {
-        if (frame) return;
-        frame = document.createElement('iframe');
-        frame.className = 'project-card__yt-frame';
-        frame.setAttribute('allow', 'autoplay; fullscreen');
-        frame.setAttribute('frameborder', '0');
-        frame.src = embedSrc;
-        media.appendChild(frame);
+        hoverTimer = setTimeout(() => {
+          if (frame) return;
+          frame = document.createElement('iframe');
+          frame.className = 'project-card__yt-frame' + (isPortrait ? ' project-card__yt-frame--portrait' : '');
+          frame.setAttribute('allow', 'autoplay; fullscreen');
+          frame.setAttribute('frameborder', '0');
+          frame.src = embedSrc;
+          media.appendChild(frame);
+        }, 250); // only load iframe after deliberate hover, not accidental mouse-overs
       });
       card.addEventListener('mouseleave', () => {
+        clearTimeout(hoverTimer);
         if (!frame) return;
         const f = frame;
         frame = null;
@@ -674,6 +680,28 @@
       clearTimeout(resizeT);
       resizeT = setTimeout(layoutStacks, 180);
     });
+
+    // PocketBase landing loader replaces stack cards asynchronously;
+    // re-run shuffle, layout, and drag setup when it finishes.
+    document.addEventListener('pb:landing-loaded', () => {
+      document.querySelectorAll('[data-stack]').forEach((container) => {
+        const all = Array.from(container.querySelectorAll(':scope > .stack-card'));
+        const real = all.filter(c => !c.hasAttribute('data-placeholder'));
+        const placeholders = all.filter(c => c.hasAttribute('data-placeholder'));
+        [...shuffleArr(real), ...shuffleArr(placeholders)].forEach((c, idx) => {
+          c.setAttribute('data-i', idx);
+          container.appendChild(c);
+        });
+      });
+      const newCards = document.querySelectorAll('.stack-card');
+      newCards.forEach(c => { c.style.transition = 'none'; });
+      layoutStacks();
+      setupCardDrag();
+      requestAnimationFrame(() => {
+        void canvas.offsetHeight;
+        newCards.forEach(c => { c.style.transition = ''; });
+      });
+    });
   }
 
   /* ----------------------------------------------------------
@@ -702,20 +730,22 @@
       );
     };
 
-    document.querySelectorAll('.stack-card').forEach((card) => {
-      card.addEventListener('pointerenter', () => {
-        clearTimeout(hideTimer);
-        const raw = categoryLabelForCard(card);
-        hoverCategoryEl.textContent = raw ? `"${raw}"` : '';
-        hoverCategoryEl.classList.add('is-visible');
-      });
+    // Use capture-phase delegation so dynamically replaced cards (from pb-landing.js) are covered
+    document.addEventListener('pointerenter', (e) => {
+      const card = e.target.closest('.stack-card');
+      if (!card) return;
+      clearTimeout(hideTimer);
+      const raw = categoryLabelForCard(card);
+      hoverCategoryEl.textContent = raw ? `"${raw}"` : '';
+      hoverCategoryEl.classList.add('is-visible');
+    }, true);
 
-      card.addEventListener('pointerleave', () => {
-        hideTimer = setTimeout(() => {
-          hoverCategoryEl.classList.remove('is-visible');
-        }, 80);
-      });
-    });
+    document.addEventListener('pointerleave', (e) => {
+      if (!e.target.closest('.stack-card')) return;
+      hideTimer = setTimeout(() => {
+        hoverCategoryEl.classList.remove('is-visible');
+      }, 80);
+    }, true);
   }
 
   /* ----------------------------------------------------------
@@ -801,10 +831,9 @@
 
   const isYouTube = (url) => /(?:youtube\.com|youtu\.be)/i.test(url || '');
   const getYouTubeId = (url) => {
-    const m = String(url || '').match(/(?:[?&]v=|youtu\.be\/)([A-Za-z0-9_-]{11})/);
+    const m = String(url || '').match(/(?:[?&]v=|youtu\.be\/|\/embed\/|\/shorts\/)([A-Za-z0-9_-]{11})/);
     return m ? m[1] : null;
   };
-  const ytThumb = (id) => `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
   const ytEmbed = (id) => `https://www.youtube.com/embed/${id}?autoplay=1&rel=0`;
 
   if (projectModal && archiveGrid) {
@@ -891,6 +920,7 @@
 
       const heroDiv = document.createElement('div');
       heroDiv.className = 'project-modal__gallery-hero';
+      if (!videoSrc) heroDiv.classList.add('project-modal__gallery-hero--full');
 
       const heroImg = document.createElement('img');
       heroImg.className = 'project-modal__gallery-hero-img';
@@ -916,7 +946,6 @@
       heroDiv.append(btnHeroPrev, btnHeroNext);
       mediaWrap.appendChild(heroDiv);
 
-      const allSrcs = videoSrc ? [...imgs, videoSrc] : [...imgs];
       let activeIdx = 0;
       const thumbEls = [];
       let rotateTimer = null;
@@ -924,7 +953,7 @@
 
       const setActive = (i) => {
         activeIdx = i;
-        if (i < imgs.length) heroImg.src = allSrcs[i];
+        heroImg.src = imgs[i];
         thumbEls.forEach((t, j) => t.classList.toggle('is-active', j === i));
       };
 
@@ -939,18 +968,15 @@
         }, 3500);
       };
 
-      if (allSrcs.length > 1) {
+      if (imgs.length > 1) {
         const thumbsDiv = document.createElement('div');
         thumbsDiv.className = 'project-modal__gallery-thumbs';
 
-        const ytId = isYouTube(videoSrc) ? getYouTubeId(videoSrc) : null;
-
-        allSrcs.forEach((src, i) => {
+        imgs.forEach((src, i) => {
           const thumb = document.createElement('div');
           thumb.className = 'project-modal__gallery-thumb' + (i === 0 ? ' is-active' : '');
           const tImg = document.createElement('img');
-          const isVideoThumb = i >= imgs.length;
-          tImg.src = isVideoThumb ? (ytId ? ytThumb(ytId) : imgs[0]) : src;
+          tImg.src = src;
           tImg.alt = '';
           tImg.loading = 'lazy';
           tImg.decoding = 'async';
@@ -961,6 +987,31 @@
         });
 
         mediaWrap.appendChild(thumbsDiv);
+      }
+
+      // Inline video embed — appears below the gallery at full stage width
+      if (videoSrc) {
+        const embedWrap = document.createElement('div');
+        embedWrap.className = 'project-modal__gallery-video-embed';
+        const ytId2 = isYouTube(videoSrc) ? getYouTubeId(videoSrc) : null;
+        if (ytId2) {
+          const embedIframe = document.createElement('iframe');
+          embedIframe.src = `https://www.youtube.com/embed/${ytId2}?rel=0`;
+          embedIframe.setAttribute('allow', 'autoplay; fullscreen; picture-in-picture');
+          embedIframe.setAttribute('allowfullscreen', '');
+          embedIframe.setAttribute('frameborder', '0');
+          embedWrap.appendChild(embedIframe);
+          galleryModalCleanup = () => { embedIframe.src = ''; };
+        } else {
+          const embedVideo = document.createElement('video');
+          embedVideo.src = videoSrc;
+          embedVideo.setAttribute('controls', '');
+          embedVideo.setAttribute('playsinline', '');
+          embedVideo.preload = 'metadata';
+          embedWrap.appendChild(embedVideo);
+          galleryModalCleanup = () => { try { embedVideo.pause(); } catch (_) {} };
+        }
+        mediaWrap.appendChild(embedWrap);
       }
 
       stage.appendChild(mediaWrap);
@@ -1036,7 +1087,7 @@
       btnLbClose.setAttribute('aria-label', 'Exit expanded gallery');
       btnLbClose.innerHTML = '<span aria-hidden="true">&times;</span>';
 
-      if (allSrcs.length <= 1) {
+      if (imgs.length <= 1) {
         btnLbPrev.hidden = true;
         btnLbNext.hidden = true;
       }
@@ -1057,10 +1108,10 @@
       const hideLbEl  = (el) => { el.hidden = true;  el.style.display = 'none'; };
 
       const goLb = (i) => {
-        const n = allSrcs.length;
+        const n = imgs.length;
         activeIdx = ((i % n) + n) % n;
-        const src = allSrcs[activeIdx];
-        const isVid = activeIdx >= imgs.length && videoSrc;
+        const src = imgs[activeIdx];
+        const isVid = false; // video is shown as inline embed, not in lightbox
         if (isVid) {
           hideLbEl(lbImg);
           try { lbVideo.pause(); } catch (_) {}
@@ -1465,7 +1516,8 @@
           const voBubbles = document.createElement('div');
           voBubbles.className = 'project-modal__meta-bubbles';
           const voYear = card.dataset.detailYear || '';
-          [{ text: 'VIDEOGRAPHY', accentSolo: true }, ...(voYear ? [{ text: voYear, accentSolo: false }] : [])]
+          const voCatText = (card.querySelector('.project-card__cat')?.textContent?.trim() || 'Work').toUpperCase();
+          [{ text: voCatText, accentSolo: true }, ...(voYear ? [{ text: voYear, accentSolo: false }] : [])]
             .forEach(({ text, accentSolo }) => {
               const pill = document.createElement('span');
               pill.className = 'project-modal__bubble project-modal__bubble--solo' + (accentSolo ? ' project-modal__bubble--solo-accent' : '');
@@ -1491,7 +1543,7 @@
 
           if (voYtId) {
             const voIframe = document.createElement('iframe');
-            voIframe.src = ytEmbed(voYtId);
+            voIframe.src = `https://www.youtube.com/embed/${voYtId}?rel=0`;
             voIframe.setAttribute('allow', 'autoplay; fullscreen; picture-in-picture');
             voIframe.setAttribute('allowfullscreen', '');
             voIframe.setAttribute('frameborder', '0');
@@ -1649,4 +1701,20 @@
     const activeBtn = filterBar?.querySelector('.filter-bar__btn.active');
     applyFilter(activeBtn?.dataset.filter ?? 'all');
   });
+
+  // Ensure static titles (HTML) also get break opportunities after underscores.
+  // surround underscores with ZWSP so breaks don't leave trailing underscores
+  const insertZWSP = (s) => String(s ?? '').replace(/_/g, (m) => '\u200B' + m + '\u200B');
+  const applyTitleBreaks = () => {
+    const sel = '.project-card__title, .project-card__meta span, .stack-card__title';
+    document.querySelectorAll(sel).forEach((el) => {
+      const txt = el.textContent ?? '';
+      const updated = insertZWSP(txt);
+      if (updated !== txt) el.textContent = updated;
+    });
+  };
+
+  document.addEventListener('DOMContentLoaded', applyTitleBreaks);
+  document.addEventListener('pb:landing-loaded', applyTitleBreaks);
+  document.addEventListener('pb:projects-loaded', applyTitleBreaks);
 })();
