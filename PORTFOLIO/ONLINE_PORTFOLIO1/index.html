@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>hearthead – ozzy · Dominik Oswald</title>
+  <meta name="description" content="Dominik Oswald (@hearthead.ozzy) — interaction designer, artist, illustrator & photographer based in Zürich, Switzerland." />
+  <link rel="icon" href="IMG_1195.PNG" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="page--landing">
+
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring-outer" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <a class="sr-only" href="#main">Skip to main content</a>
+
+  <header class="site-header site-header--landing">
+    <div class="site-header__inner">
+      <div class="site-header__lead">
+        <a class="site-home brand" href="index.html" aria-label="hearthead – ozzy, home">
+          <svg class="site-home__icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <g fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 4.5 L17.5 11.5 L6.5 11.5 Z" />
+              <path d="M6.5 11.5 V20.5 H17.5 V11.5" />
+              <path d="M6.5 11.5 L17.5 20.5 M17.5 11.5 L6.5 20.5" />
+            </g>
+          </svg>
+          <span>hearthead&nbsp;–&nbsp;ozzy</span>
+        </a>
+      </div>
+
+      <nav class="primary-nav" aria-label="Primary">
+        <ul class="primary-nav__list">
+          <li><a class="primary-nav__link" data-nav href="projects.html">Archive</a></li>
+          <li><a class="primary-nav__link" data-nav href="about.html">About</a></li>
+        </ul>
+      </nav>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
+        <span class="nav-toggle__bar" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <ul class="mobile-nav__list">
+      <li class="mobile-nav__group">
+        <a class="mobile-nav__link" data-nav href="projects.html" data-num="01">Archive</a>
+        <ul class="mobile-nav__sub">
+          <li><a href="projects.html">All</a></li>
+          <li><a href="projects.html?cat=art">Art</a></li>
+          <li><a href="projects.html?cat=interaction">Interaction Design</a></li>
+          <li><a href="projects.html?cat=graphic">Graphic</a></li>
+          <li><a href="projects.html?cat=illustration">Illustration</a></li>
+          <li><a href="projects.html?cat=photography">Photography</a></li>
+        </ul>
+      </li>
+      <li><a class="mobile-nav__link" data-nav href="about.html" data-num="02">About</a></li>
+    </ul>
+  </div>
+
+  <main class="landing-canvas" id="main">
+
+    <!-- subtle ASCII water background -->
+    <div class="landing-ascii" aria-hidden="true"></div>
+
+    <!-- bottom info bar (Bauhaus-atlas style strip) -->
+    <div class="landing-strip" aria-hidden="true">
+      <span class="landing-strip__cell">HEARTHEAD — OZZY</span>
+      <span class="landing-strip__cell">IAD_2025</span>
+    </div>
+
+    <!-- drag hint -->
+    <div class="landing-drag-hint" aria-hidden="true">Move the<br>objects</div>
+
+    <!-- ---- ILLUSTRATIONS STACK (first 5 projects → Archive) -->
+    <section class="stack" data-cat="illustration" aria-label="Illustration projects">
+      <div class="stack__cards" data-stack>
+
+        <button class="stack-card" type="button"
+                data-i="0"
+                data-href="projects.html?cat=illustration"
+                data-title="&quot;SEEMS_NORMAL,HUH?&quot;">
+          <div class="stack-card__frame">
+            <div class="stack-card__media">
+              <img loading="eager" fetchpriority="high" decoding="async" src="MEDIA/ILLUSTRATIONs/SEEMS_NORMAL/1.PNG" alt="&quot;SEEMS_NORMAL,HUH?&quot;"
+                 onerror="this.outerHTML='<div class=&quot;stack-card__placeholder&quot;>IL · 01</div>'" />
+            </div>
+            <span class="stack-card__overlay" aria-hidden="true">
+              <span class="stack-card__title">"SEEMS_NORMAL,HUH?"</span>
+            </span>
+          </div>
+        </button>
+
+        <button class="stack-card" type="button"
+                data-i="1"
+                data-href="projects.html?cat=illustration"
+                data-title="&quot;GUILT_FREE&quot;">
+          <div class="stack-card__frame">
+            <div class="stack-card__media">
+              <img loading="lazy" decoding="async" src="MEDIA/ILLUSTRATIONs/2_&quot;GUILT_FREE&quot;/1.PNG" alt="&quot;GUILT_FREE&quot;"
+                 onerror="this.outerHTML='<div class=&quot;stack-card__placeholder&quot;>IL · 02</div>'" />
+            </div>
+            <span class="stack-card__overlay" aria-hidden="true">
+              <span class="stack-card__title">"GUILT_FREE"</span>
+            </span>
+          </div>
+        </button>
+
+        <button class="stack-card" type="button"
+                data-i="2"
+                data-href="projects.html?cat=illustration"
+                data-title="&quot;DANGLING_DESIRE&quot;">
+          <div class="stack-card__frame">
+            <div class="stack-card__media">
+              <img loading="lazy" decoding="async" src="MEDIA/ILLUSTRATIONs/3&quot;_DANGLING_DESIRE&quot;/1.PNG" alt="&quot;DANGLING_DESIRE&quot;"
+                 onerror="this.outerHTML='<div class=&quot;stack-card__placeholder&quot;>IL · 03</div>'" />
+            </div>
+            <span class="stack-card__overlay" aria-hidden="true">
+              <span class="stack-card__title">"DANGLING_DESIRE"</span>
+            </span>
+          </div>
+        </button>
+
+        <button class="stack-card" type="button"
+                data-i="3"
+                data-href="projects.html?cat=illustration"
+                data-title="&quot;THORNS_OVER_TENDERNESS&quot;">
+          <div class="stack-card__frame">
+            <div class="stack-card__media">
+              <img loading="lazy" decoding="async" src="MEDIA/ILLUSTRATIONs/4_&quot;THORNS_OVER_TENDERNESS&quot;/1.PNG" alt="&quot;THORNS_OVER_TENDERNESS&quot;"
+                 onerror="this.outerHTML='<div class=&quot;stack-card__placeholder&quot;>IL · 04</div>'" />
+            </div>
+            <span class="stack-card__overlay" aria-hidden="true">
+              <span class="stack-card__title">"THORNS_OVER_TENDERNESS"</span>
+            </span>
+          </div>
+        </button>
+
+        <button class="stack-card" type="button"
+                data-i="4"
+                data-href="projects.html?cat=illustration"
+                data-title="&quot;-.. . ... .--. .- .. .-.&quot;">
+          <div class="stack-card__frame">
+            <div class="stack-card__media">
+              <img loading="lazy" decoding="async" src="MEDIA/ILLUSTRATIONs/5_&quot;-.. . ... .--. .- .. .-.&quot;/1.PNG" alt="&quot;-.. . ... .--. .- .. .-.&quot;"
+                 onerror="this.outerHTML='<div class=&quot;stack-card__placeholder&quot;>IL · 05</div>'" />
+            </div>
+            <span class="stack-card__overlay" aria-hidden="true">
+              <span class="stack-card__title">"-.. . ... .--. .- .. .-."</span>
+            </span>
+          </div>
+        </button>
+
+      </div>
+    </section>
+
+    <!-- ---- PROJECTS / INTERACTION STACK ------------------------- -->
+    <section class="stack" data-cat="interaction" aria-label="Interaction design projects">
+      <div class="stack__cards" data-stack>
+
+        <button class="stack-card" type="button"
+                data-i="0"
+                data-href="projects.html?cat=interaction"
+                data-title="&quot;OPTICAL_PRIME&quot;">
+          <div class="stack-card__frame">
+            <div class="stack-card__media">
+              <img loading="lazy" decoding="async" src="MEDIA/INTERACTION/OPTICAL_PRIME/SIMULATION_thumb.jpg" alt="&quot;OPTICAL_PRIME&quot;"
+                 onerror="this.outerHTML='<div class=&quot;stack-card__placeholder&quot;>Project · 04</div>'" />
+            </div>
+            <span class="stack-card__overlay" aria-hidden="true">
+              <span class="stack-card__title">"OPTICAL_PRIME"</span>
+            </span>
+          </div>
+        </button>
+
+      </div>
+    </section>
+
+    <!-- ---- PHOTOGRAPHY STACK ------------------------------------ -->
+    <!-- ---- GRAPHIC DESIGN STACK --------------------------------- -->
+    <section class="stack" data-cat="graphic" aria-label="Graphic design projects">
+      <div class="stack__cards" data-stack>
+
+        <button class="stack-card" type="button"
+                data-i="0"
+                data-href="projects.html?cat=graphic"
+                data-title="&quot;CALENDAR&quot;">
+          <div class="stack-card__frame">
+            <div class="stack-card__media">
+              <img loading="lazy" decoding="async" src="MEDIA/GRAPHIC/CALENDAR/01_JANUARY.png" alt="&quot;CALENDAR&quot;"
+                 onerror="this.outerHTML='<div class=&quot;stack-card__placeholder&quot;>Graphic · 01</div>'" />
+            </div>
+            <span class="stack-card__overlay" aria-hidden="true">
+              <span class="stack-card__title">"CALENDAR"</span>
+            </span>
+          </div>
+        </button>
+
+        <button class="stack-card" type="button"
+                data-i="1"
+                data-href="projects.html?cat=graphic"
+                data-title="&quot;RATTÄ&quot;">
+          <div class="stack-card__frame">
+            <div class="stack-card__media">
+              <img loading="lazy" decoding="async" src="MEDIA/GRAPHIC/RATTÄ/0-787.jpg" alt="&quot;RATTÄ&quot;"
+                 onerror="this.outerHTML='<div class=&quot;stack-card__placeholder&quot;>Graphic · 02</div>'" />
+            </div>
+            <span class="stack-card__overlay" aria-hidden="true">
+              <span class="stack-card__title">"RATTÄ"</span>
+            </span>
+          </div>
+        </button>
+
+      </div>
+    </section>
+
+    <!-- ---- VIDEO STACK ----------------------------------------- -->
+    <section class="stack" data-cat="video" aria-label="Video projects">
+      <div class="stack__cards" data-stack>
+
+        <button class="stack-card" type="button"
+                data-i="0"
+                data-href="projects.html?cat=photography"
+                data-title="LIGHT_AS_MATTER">
+          <div class="stack-card__frame">
+            <div class="stack-card__media">
+              <video loading="lazy" src="MEDIA/VIDEOs/LIGHT_AS_MATTER.mp4" muted preload="metadata" playsinline></video>
+            </div>
+            <span class="stack-card__overlay" aria-hidden="true">
+              <span class="stack-card__title">LIGHT_AS_MATTER</span>
+            </span>
+          </div>
+        </button>
+
+        <button class="stack-card" type="button"
+                data-i="1"
+                data-href="projects.html?cat=photography"
+                data-title="TRASH_TALKING">
+          <div class="stack-card__frame">
+            <div class="stack-card__media">
+              <video loading="lazy" src="MEDIA/VIDEOs/TRASH_TALKING.mp4" muted preload="metadata" playsinline></video>
+            </div>
+            <span class="stack-card__overlay" aria-hidden="true">
+              <span class="stack-card__title">TRASH_TALKING</span>
+            </span>
+          </div>
+        </button>
+
+        <button class="stack-card" type="button"
+                data-i="2"
+                data-href="projects.html?cat=photography"
+                data-title="NO_WATER_NO_TOMORROW">
+          <div class="stack-card__frame">
+            <div class="stack-card__media">
+              <video loading="lazy" src="MEDIA/VIDEOs/NO_WATER-NO_TOMORROW.mp4" muted preload="metadata" playsinline></video>
+            </div>
+            <span class="stack-card__overlay" aria-hidden="true">
+              <span class="stack-card__title">NO_WATER_NO_TOMORROW</span>
+            </span>
+          </div>
+        </button>
+
+        <button class="stack-card" type="button"
+                data-i="3"
+                data-href="projects.html?cat=photography"
+                data-title="STUDENT_TAKEOVER-DAY01">
+          <div class="stack-card__frame">
+            <div class="stack-card__media">
+              <video loading="lazy" src="MEDIA/VIDEOs/STUDENT_TAKEOVER.mp4" muted preload="metadata" playsinline></video>
+            </div>
+            <span class="stack-card__overlay" aria-hidden="true">
+              <span class="stack-card__title">STUDENT_TAKEOVER-DAY01</span>
+            </span>
+          </div>
+        </button>
+
+      </div>
+    </section>
+
+    <!-- Category label — viewport center (over orb) on stack-card hover -->
+    <div class="landing-hover-category" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- ---- ORB · pink disc → black quadrant dial ---------------- -->
+    <nav class="orb" aria-label="Main navigation" data-cursor="hover">
+
+      <svg class="orb__svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="false" focusable="false">
+        <defs>
+          <!-- text-bearing arcs at r=72, slightly inside the disc -->
+          <path id="orb-arc-tl" d="M28,100 A72,72 0 0,1 100,28" />
+          <path id="orb-arc-tr" d="M100,28 A72,72 0 0,1 172,100" />
+          <path id="orb-arc-br" d="M172,100 A72,72 0 0,1 100,172" />
+          <path id="orb-arc-bl" d="M100,172 A72,72 0 0,1 28,100" />
+        </defs>
+
+        <!-- Inner ring — sits just inside the label arcs, reads as underline -->
+        <circle
+          class="orb__label-ring"
+          cx="100"
+          cy="100"
+          r="62"
+          fill="none"
+          vector-effect="non-scaling-stroke"
+        />
+
+        <!-- "+" dividers (visible only when expanded) -->
+        <g class="orb__dividers">
+          <line x1="100" y1="0"   x2="100" y2="200" />
+          <line x1="0"   y1="100" x2="200" y2="100" />
+        </g>
+
+        <!-- 4 clickable quadrants with curved labels -->
+        <g class="orb__sectors">
+
+          <a class="orb__sector" href="projects.html" aria-label="Archive">
+            <path d="M100,100 L0,100 A100,100 0 0,1 100,0 Z" />
+            <text>
+              <textPath href="#orb-arc-tl" startOffset="50%" text-anchor="middle">Archive</textPath>
+            </text>
+          </a>
+
+          <a class="orb__sector" href="https://www.instagram.com/hearthead.ozzy/"
+             target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <path d="M100,100 L100,0 A100,100 0 0,1 200,100 Z" />
+            <text>
+              <textPath href="#orb-arc-tr" startOffset="50%" text-anchor="middle">Instagram</textPath>
+            </text>
+          </a>
+
+          <a class="orb__sector" href="contact.html" aria-label="Contact">
+            <path d="M100,100 L200,100 A100,100 0 0,1 100,200 Z" />
+            <text>
+              <textPath href="#orb-arc-br" startOffset="50%" text-anchor="middle">Contact</textPath>
+            </text>
+          </a>
+
+          <a class="orb__sector" href="about.html" aria-label="About">
+            <path d="M100,100 L100,200 A100,100 0 0,1 0,100 Z" />
+            <text>
+              <textPath href="#orb-arc-bl" startOffset="50%" text-anchor="middle">About</textPath>
+            </text>
+          </a>
+
+        </g>
+      </svg>
+
+      <!-- white center dot, always visible -->
+      <span class="orb__dot" aria-hidden="true"></span>
+    </nav>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
