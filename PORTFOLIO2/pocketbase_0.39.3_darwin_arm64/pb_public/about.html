@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About & Contact · hearthead – ozzy</title>
+  <meta name="description" content="About Dominik Oswald — interaction designer & multidisciplinary artist based in Zürich." />
+  <link rel="icon" href="IMG_1195.PNG" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <div class="site-header__lead">
+        <a class="site-home brand" href="index.html" aria-label="hearthead – ozzy, home">
+          <svg class="site-home__icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <g fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 4.5 L17.5 11.5 L6.5 11.5 Z" />
+              <path d="M6.5 11.5 V20.5 H17.5 V11.5" />
+              <path d="M6.5 11.5 L17.5 20.5 M17.5 11.5 L6.5 20.5" />
+            </g>
+          </svg>
+          <span>hearthead&nbsp;–&nbsp;ozzy</span>
+        </a>
+      </div>
+
+      <nav class="primary-nav" aria-label="Primary">
+        <ul class="primary-nav__list">
+          <li><a class="primary-nav__link" data-nav href="projects.html">Archive</a></li>
+          <li><a class="primary-nav__link" data-nav href="about.html">About</a></li>
+        </ul>
+      </nav>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
+        <span class="nav-toggle__bar" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <ul class="mobile-nav__list">
+      <li><a class="mobile-nav__link" data-nav href="projects.html" data-num="01">Archive</a></li>
+      <li><a class="mobile-nav__link" data-nav href="about.html" data-num="02">About</a></li>
+    </ul>
+  </div>
+
+  <main class="main" id="main">
+    <div class="container">
+      <div class="meta-strip" aria-hidden="true">
+        <span>Index № 02 — About</span>
+        <span>Subject: D. Oswald</span>
+        <span>File 02 of 03</span>
+        <span>Last updated · 2026</span>
+      </div>
+
+      <section class="about">
+        <div class="about__grid">
+
+          <aside class="about__index" aria-hidden="true">
+            01.
+            <small>Subject file · Volume II</small>
+          </aside>
+
+          <div class="about__body">
+            <h1 class="about__heading">Dominik Oswald — Interaction Designer</h1>
+
+            <p class="about__lede">
+              I'm a Zürich-based interaction design student and multidisciplinary maker
+              working across art, graphic design, illustration and photography under the
+              name <strong>@hearthead.ozzy</strong>.
+            </p>
+
+            <div class="about__copy">
+              <p>
+                My work sits between research and personal practice — I treat each project
+                as an entry in an ongoing archive. I'm drawn to dense type, archival
+                aesthetics, raw paper, ink that bleeds slightly, interfaces that feel
+                like reading rooms, and small details that betray a human hand.
+              </p>
+              <p>
+                Currently studying interaction design while taking freelance commissions
+                in editorial design, illustration and product UI. Available for
+                collaborations, commissions and slow conversations.
+              </p>
+            </div>
+
+            <ul class="tag-list" aria-label="Skills and tools">
+              <li>Figma</li>
+              <li>Prototyping</li>
+              <li>HTML / CSS</li>
+              <li>Illustration</li>
+              <li>Photography</li>
+              <li>Type Design</li>
+              <li>Risograph</li>
+              <li>Editorial</li>
+            </ul>
+
+            <dl class="fact-grid">
+              <div>
+                <strong>Based in</strong>
+                Zürich, CH
+              </div>
+              <div>
+                <strong>Currently</strong>
+                Studying Interaction Design
+              </div>
+              <div>
+                <strong>Working in</strong>
+                EN · DE
+              </div>
+            </dl>
+
+            <figure class="about__portrait" aria-label="Portrait placeholder">
+              <img src="assets/projects/portrait.jpg" alt="Portrait of Dominik Oswald"
+                   style="width:100%;height:100%;object-fit:cover;"
+                   onerror="this.outerHTML='Portrait · place IMG here'" />
+            </figure>
+          </div>
+
+        </div>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"></div>
+
+      <section class="contact" id="contact">
+        <div class="meta-strip meta-strip--section" aria-hidden="true">
+          <span>Index № 03 — Contact</span>
+          <span>Channels: 02</span>
+          <span>Response: 24–72h</span>
+          <span>Status: Available</span>
+        </div>
+
+        <div class="contact__grid">
+          <h2 class="contact__heading">
+            Let's<br />
+            work<br />
+            together<span class="accent">.</span>
+          </h2>
+
+          <ul class="contact__links" aria-label="Contact links">
+            <li>
+              <a class="contact__link" href="mailto:mail@hearthead.ozzy">
+                <span class="contact__link__label">01 · Email</span>
+                <span class="contact__link__value">mail@hearthead.ozzy</span>
+                <span class="contact__link__arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+            <li>
+              <a class="contact__link" href="https://www.instagram.com/hearthead.ozzy/" target="_blank" rel="noopener noreferrer">
+                <span class="contact__link__label">02 · Instagram</span>
+                <span class="contact__link__value">@hearthead.ozzy</span>
+                <span class="contact__link__arrow" aria-hidden="true">↗</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <p class="contact__note">Available for freelance — Zürich &amp; Remote</p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <span>hearthead – ozzy</span>
+      <span class="site-footer__center">© <span class="year-mirror" id="year">2025</span> hearthead – ozzy. All rights reserved.</span>
+      <span class="site-footer__right">About · Vol. II</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

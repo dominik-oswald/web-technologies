@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Archive · hearthead – ozzy</title>
+  <meta name="description" content="Selected works by Dominik Oswald — art, interaction design, graphic design, illustration & photography." />
+  <link rel="icon" href="IMG_1195.PNG" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <div class="site-header__lead">
+        <a class="site-home brand" href="index.html" aria-label="hearthead – ozzy, home">
+          <svg class="site-home__icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <g fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 4.5 L17.5 11.5 L6.5 11.5 Z" />
+              <path d="M6.5 11.5 V20.5 H17.5 V11.5" />
+              <path d="M6.5 11.5 L17.5 20.5 M17.5 11.5 L6.5 20.5" />
+            </g>
+          </svg>
+          <span>hearthead&nbsp;–&nbsp;ozzy</span>
+        </a>
+      </div>
+
+      <nav class="primary-nav" aria-label="Primary">
+        <ul class="primary-nav__list">
+          <li><a class="primary-nav__link" data-nav href="projects.html">Archive</a></li>
+          <li><a class="primary-nav__link" data-nav href="about.html">About</a></li>
+        </ul>
+      </nav>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
+        <span class="nav-toggle__bar" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <ul class="mobile-nav__list">
+      <li><a class="mobile-nav__link" data-nav href="projects.html" data-num="01">Archive</a></li>
+      <li><a class="mobile-nav__link" data-nav href="about.html" data-num="02">About</a></li>
+    </ul>
+  </div>
+
+  <main class="main" id="main">
+    <div class="container">
+      <section class="archive-head">
+        <div class="archive-head__top">
+          <h1 class="archive-head__title">Archive</h1>
+        </div>
+
+        <div class="filter-bar" role="tablist" aria-label="Filter by category">
+          <button class="filter-bar__btn active" data-filter="all" type="button">All</button>
+          <button class="filter-bar__btn" data-filter="illustration" type="button">Illustration</button>
+          <button class="filter-bar__btn" data-filter="interaction" type="button">Interaction Design</button>
+          <button class="filter-bar__btn" data-filter="graphic" type="button">Graphic Design</button>
+          <button class="filter-bar__btn" data-filter="art" type="button">Art</button>
+          <button class="filter-bar__btn" data-filter="photography" type="button">Videography</button>
+          <span class="filter-bar__count" data-filter-count aria-live="polite">00 / 00 ITEMS</span>
+        </div>
+      </section>
+
+      <!-- section anchors (invisible, used by hero links) -->
+      <span class="archive-section-anchor" id="art"></span>
+      <span class="archive-section-anchor" id="projects"></span>
+      <span class="archive-section-anchor" id="graphic-design"></span>
+      <span class="archive-section-anchor" id="illustrations"></span>
+      <span class="archive-section-anchor" id="photography"></span>
+
+      <ul class="archive-grid" id="archive-grid"><li class="archive-grid__section" data-archive-section="illustration">
+          <button type="button" class="archive-section-bar">Illustration</button>
+        </li>
+
+        <!-- ILLUSTRATION — folder series (gallery + video) -->
+
+        <li>
+          <a class="project-card project-card--stack" data-category="illustration" href="#"
+             data-gallery-images="MEDIA/ILLUSTRATIONs/SEEMS_NORMAL/1.PNG,MEDIA/ILLUSTRATIONs/SEEMS_NORMAL/2.PNG,MEDIA/ILLUSTRATIONs/SEEMS_NORMAL/3.PNG,MEDIA/ILLUSTRATIONs/SEEMS_NORMAL/4.PNG,MEDIA/ILLUSTRATIONs/SEEMS_NORMAL/5.PNG"
+             data-detail-year="2025">
+            <div class="project-card__media">
+              <div class="archive-stack" aria-hidden="true">
+                <div class="archive-stack__sheet" style="--z:1;--dx:-10px;--dy:18px;--rot:-7deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/ILLUSTRATIONs/SEEMS_NORMAL/5.PNG" alt="" />
+                </div>
+                <div class="archive-stack__sheet" style="--z:2;--dx:8px;--dy:12px;--rot:5deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/ILLUSTRATIONs/SEEMS_NORMAL/4.PNG" alt="" />
+                </div>
+                <div class="archive-stack__sheet" style="--z:3;--dx:-6px;--dy:6px;--rot:-3deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/ILLUSTRATIONs/SEEMS_NORMAL/3.PNG" alt="" />
+                </div>
+                <div class="archive-stack__sheet" style="--z:4;--dx:5px;--dy:2px;--rot:4deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/ILLUSTRATIONs/SEEMS_NORMAL/2.PNG" alt="" />
+                </div>
+                <div class="archive-stack__sheet" style="--z:5;--dx:-2px;--dy:-6px;--rot:-2deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/ILLUSTRATIONs/SEEMS_NORMAL/1.PNG" alt="&quot;SEEMS_NORMAL,HUH?&quot;" />
+                </div>
+              </div>
+              <div class="project-card__overlay">
+                <span class="project-card__title">"SEEMS_NORMAL,HUH?"</span>
+                <span class="project-card__cat">Illustration</span>
+              </div>
+            </div>
+            <div class="project-card__meta"><span>"SEEMS_NORMAL,HUH?"</span></div>
+          </a>
+        </li>
+
+        <li>
+          <a class="project-card project-card--stack" data-category="illustration" href="#"
+             data-gallery-images="MEDIA/ILLUSTRATIONs/2_&quot;GUILT_FREE&quot;/1.PNG,MEDIA/ILLUSTRATIONs/2_&quot;GUILT_FREE&quot;/2.PNG"
+             data-detail-year="2025">
+            <div class="project-card__media">
+              <div class="archive-stack" aria-hidden="true">
+                <div class="archive-stack__sheet" style="--z:1;--dx:-10px;--dy:18px;--rot:-7deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/ILLUSTRATIONs/2_&quot;GUILT_FREE&quot;/2.PNG" alt="" />
+                </div>
+                <div class="archive-stack__sheet" style="--z:2;--dx:8px;--dy:12px;--rot:5deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/ILLUSTRATIONs/2_&quot;GUILT_FREE&quot;/1.PNG" alt="&quot;GUILT_FREE&quot;" />
+                </div>
+              </div>
+              <div class="project-card__overlay">
+                <span class="project-card__title">"GUILT_FREE"</span>
+                <span class="project-card__cat">Illustration</span>
+              </div>
+            </div>
+            <div class="project-card__meta"><span>"GUILT_FREE"</span></div>
+          </a>
+        </li>
+
+        <li>
+          <a class="project-card project-card--stack" data-category="illustration" href="#"
+             data-gallery-images="MEDIA/ILLUSTRATIONs/3&quot;_DANGLING_DESIRE&quot;/1.PNG,MEDIA/ILLUSTRATIONs/3&quot;_DANGLING_DESIRE&quot;/2.PNG"
+             data-detail-year="2025">
+            <div class="project-card__media">
+              <div class="archive-stack" aria-hidden="true">
+                <div class="archive-stack__sheet" style="--z:1;--dx:-10px;--dy:18px;--rot:-7deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/ILLUSTRATIONs/3&quot;_DANGLING_DESIRE&quot;/2.PNG" alt="" />
+                </div>
+                <div class="archive-stack__sheet" style="--z:2;--dx:8px;--dy:12px;--rot:5deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/ILLUSTRATIONs/3&quot;_DANGLING_DESIRE&quot;/1.PNG" alt="&quot;DANGLING_DESIRE&quot;" />
+                </div>
+              </div>
+              <div class="project-card__overlay">
+                <span class="project-card__title">"DANGLING_DESIRE"</span>
+                <span class="project-card__cat">Illustration</span>
+              </div>
+            </div>
+            <div class="project-card__meta"><span>"DANGLING_DESIRE"</span></div>
+          </a>
+        </li>
+
+        <li>
+          <a class="project-card project-card--stack" data-category="illustration" href="#"
+             data-gallery-images="MEDIA/ILLUSTRATIONs/4_&quot;THORNS_OVER_TENDERNESS&quot;/1.PNG,MEDIA/ILLUSTRATIONs/4_&quot;THORNS_OVER_TENDERNESS&quot;/2.PNG,MEDIA/ILLUSTRATIONs/4_&quot;THORNS_OVER_TENDERNESS&quot;/3.jpeg,MEDIA/ILLUSTRATIONs/4_&quot;THORNS_OVER_TENDERNESS&quot;/4.jpeg,MEDIA/ILLUSTRATIONs/4_&quot;THORNS_OVER_TENDERNESS&quot;/5.jpeg"
+             data-detail-year="2025">
+            <div class="project-card__media">
+              <div class="archive-stack" aria-hidden="true">
+                <div class="archive-stack__sheet" style="--z:1;--dx:-10px;--dy:18px;--rot:-7deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/ILLUSTRATIONs/4_&quot;THORNS_OVER_TENDERNESS&quot;/5.jpeg" alt="" />
+                </div>
+                <div class="archive-stack__sheet" style="--z:2;--dx:8px;--dy:12px;--rot:5deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/ILLUSTRATIONs/4_&quot;THORNS_OVER_TENDERNESS&quot;/4.jpeg" alt="" />
+                </div>
+                <div class="archive-stack__sheet" style="--z:3;--dx:-6px;--dy:6px;--rot:-3deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/ILLUSTRATIONs/4_&quot;THORNS_OVER_TENDERNESS&quot;/3.jpeg" alt="" />
+                </div>
+                <div class="archive-stack__sheet" style="--z:4;--dx:5px;--dy:2px;--rot:4deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/ILLUSTRATIONs/4_&quot;THORNS_OVER_TENDERNESS&quot;/2.PNG" alt="" />
+                </div>
+                <div class="archive-stack__sheet" style="--z:5;--dx:-2px;--dy:-6px;--rot:-2deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/ILLUSTRATIONs/4_&quot;THORNS_OVER_TENDERNESS&quot;/1.PNG" alt="&quot;THORNS_OVER_TENDERNESS&quot;" />
+                </div>
+              </div>
+              <div class="project-card__overlay">
+                <span class="project-card__title">"THORNS_OVER_TENDERNESS"</span>
+                <span class="project-card__cat">Illustration</span>
+              </div>
+            </div>
+            <div class="project-card__meta"><span>"THORNS_OVER_TENDERNESS"</span></div>
+          </a>
+        </li>
+
+        <li>
+          <a class="project-card project-card--stack" data-category="illustration" href="#"
+             data-gallery-images="MEDIA/ILLUSTRATIONs/5_&quot;-.. . ... .--. .- .. .-.&quot;/1.PNG,MEDIA/ILLUSTRATIONs/5_&quot;-.. . ... .--. .- .. .-.&quot;/2.PNG,MEDIA/ILLUSTRATIONs/5_&quot;-.. . ... .--. .- .. .-.&quot;/3.jpeg,MEDIA/ILLUSTRATIONs/5_&quot;-.. . ... .--. .- .. .-.&quot;/4.jpeg,MEDIA/ILLUSTRATIONs/5_&quot;-.. . ... .--. .- .. .-.&quot;/5.jpeg"
+             data-detail-year="2025">
+            <div class="project-card__media">
+              <div class="archive-stack" aria-hidden="true">
+                <div class="archive-stack__sheet" style="--z:1;--dx:-10px;--dy:18px;--rot:-7deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/ILLUSTRATIONs/5_&quot;-.. . ... .--. .- .. .-.&quot;/5.jpeg" alt="" />
+                </div>
+                <div class="archive-stack__sheet" style="--z:2;--dx:8px;--dy:12px;--rot:5deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/ILLUSTRATIONs/5_&quot;-.. . ... .--. .- .. .-.&quot;/4.jpeg" alt="" />
+                </div>
+                <div class="archive-stack__sheet" style="--z:3;--dx:-6px;--dy:6px;--rot:-3deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/ILLUSTRATIONs/5_&quot;-.. . ... .--. .- .. .-.&quot;/3.jpeg" alt="" />
+                </div>
+                <div class="archive-stack__sheet" style="--z:4;--dx:5px;--dy:2px;--rot:4deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/ILLUSTRATIONs/5_&quot;-.. . ... .--. .- .. .-.&quot;/2.PNG" alt="" />
+                </div>
+                <div class="archive-stack__sheet" style="--z:5;--dx:-2px;--dy:-6px;--rot:-2deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/ILLUSTRATIONs/5_&quot;-.. . ... .--. .- .. .-.&quot;/1.PNG" alt="&quot;-.. . ... .--. .- .. .-.&quot;" />
+                </div>
+              </div>
+              <div class="project-card__overlay">
+                <span class="project-card__title">"-.. . ... .--. .- .. .-."</span>
+                <span class="project-card__cat">Illustration</span>
+              </div>
+            </div>
+            <div class="project-card__meta"><span>"-.. . ... .--. .- .. .-."</span></div>
+          </a>
+        </li>
+
+        <li>
+          <a class="project-card project-card--stack" data-category="illustration" href="#"
+             data-gallery-images="MEDIA/ILLUSTRATIONs/6_&quot;P1NK_C4N0PY&quot;/1.PNG,MEDIA/ILLUSTRATIONs/6_&quot;P1NK_C4N0PY&quot;/2.PNG"
+             data-detail-year="2025">
+            <div class="project-card__media">
+              <div class="archive-stack" aria-hidden="true">
+                <div class="archive-stack__sheet" style="--z:1;--dx:-10px;--dy:18px;--rot:-7deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/ILLUSTRATIONs/6_&quot;P1NK_C4N0PY&quot;/2.PNG" alt="" />
+                </div>
+                <div class="archive-stack__sheet" style="--z:2;--dx:8px;--dy:12px;--rot:5deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/ILLUSTRATIONs/6_&quot;P1NK_C4N0PY&quot;/1.PNG" alt="&quot;P1NK_C4N0PY&quot;" />
+                </div>
+              </div>
+              <div class="project-card__overlay">
+                <span class="project-card__title">"P1NK_C4N0PY"</span>
+                <span class="project-card__cat">Illustration</span>
+              </div>
+            </div>
+            <div class="project-card__meta"><span>"P1NK_C4N0PY"</span></div>
+          </a>
+        </li>
+
+        <li>
+          <a class="project-card project-card--stack" data-category="illustration" href="#"
+             data-gallery-images="MEDIA/ILLUSTRATIONs/7_&quot;CITRUS_MELANCHOLY&quot;/1.PNG,MEDIA/ILLUSTRATIONs/7_&quot;CITRUS_MELANCHOLY&quot;/2.PNG"
+             data-detail-year="2025">
+            <div class="project-card__media">
+              <div class="archive-stack" aria-hidden="true">
+                <div class="archive-stack__sheet" style="--z:1;--dx:-10px;--dy:18px;--rot:-7deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/ILLUSTRATIONs/7_&quot;CITRUS_MELANCHOLY&quot;/2.PNG" alt="" />
+                </div>
+                <div class="archive-stack__sheet" style="--z:2;--dx:8px;--dy:12px;--rot:5deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/ILLUSTRATIONs/7_&quot;CITRUS_MELANCHOLY&quot;/1.PNG" alt="&quot;CITRUS_MELANCHOLY&quot;" />
+                </div>
+              </div>
+              <div class="project-card__overlay">
+                <span class="project-card__title">"CITRUS_MELANCHOLY"</span>
+                <span class="project-card__cat">Illustration</span>
+              </div>
+            </div>
+            <div class="project-card__meta"><span>"CITRUS_MELANCHOLY"</span></div>
+          </a>
+        </li>
+
+        <li>
+          <a class="project-card project-card--stack" data-category="illustration" href="#"
+             data-gallery-images="MEDIA/ILLUSTRATIONs/8_&quot;IN_A_PINCH&quot;/1.PNG,MEDIA/ILLUSTRATIONs/8_&quot;IN_A_PINCH&quot;/2.PNG"
+             data-detail-year="2025">
+            <div class="project-card__media">
+              <div class="archive-stack" aria-hidden="true">
+                <div class="archive-stack__sheet" style="--z:1;--dx:-10px;--dy:18px;--rot:-7deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/ILLUSTRATIONs/8_&quot;IN_A_PINCH&quot;/2.PNG" alt="" />
+                </div>
+                <div class="archive-stack__sheet" style="--z:2;--dx:8px;--dy:12px;--rot:5deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/ILLUSTRATIONs/8_&quot;IN_A_PINCH&quot;/1.PNG" alt="&quot;IN_A_PINCH&quot;" />
+                </div>
+              </div>
+              <div class="project-card__overlay">
+                <span class="project-card__title">"IN_A_PINCH"</span>
+                <span class="project-card__cat">Illustration</span>
+              </div>
+            </div>
+            <div class="project-card__meta"><span>"IN_A_PINCH"</span></div>
+          </a>
+        </li>
+
+        <li>
+          <a class="project-card project-card--stack" data-category="illustration" href="#"
+             data-gallery-images="MEDIA/ILLUSTRATIONs/9_DRIFTING/1.jpeg,MEDIA/ILLUSTRATIONs/9_DRIFTING/2.jpeg"
+             data-detail-year="2025">
+            <div class="project-card__media">
+              <div class="archive-stack" aria-hidden="true">
+                <div class="archive-stack__sheet" style="--z:1;--dx:-10px;--dy:18px;--rot:-7deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/ILLUSTRATIONs/9_DRIFTING/2.jpeg" alt="" />
+                </div>
+                <div class="archive-stack__sheet" style="--z:2;--dx:8px;--dy:12px;--rot:5deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/ILLUSTRATIONs/9_DRIFTING/1.jpeg" alt='"\\DRIFTING::"' />
+                </div>
+              </div>
+              <div class="project-card__overlay">
+                <span class="project-card__title">"\\DRIFTING::"</span>
+                <span class="project-card__cat">Illustration</span>
+              </div>
+            </div>
+            <div class="project-card__meta"><span>"\DRIFTING::"</span></div>
+          </a>
+        </li>
+
+        <li>
+          <a class="project-card project-card--stack" data-category="illustration" href="#"
+             data-gallery-images="MEDIA/ILLUSTRATIONs/10_&quot;FOR<3_YOU_1-4&quot;/1.PNG,MEDIA/ILLUSTRATIONs/10_&quot;FOR<3_YOU_1-4&quot;/2.PNG,MEDIA/ILLUSTRATIONs/10_&quot;FOR<3_YOU_1-4&quot;/3.PNG,MEDIA/ILLUSTRATIONs/10_&quot;FOR<3_YOU_1-4&quot;/4.PNG"
+             data-detail-year="2025">
+            <div class="project-card__media">
+              <div class="archive-stack" aria-hidden="true">
+                <div class="archive-stack__sheet" style="--z:1;--dx:-10px;--dy:18px;--rot:-7deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/ILLUSTRATIONs/10_&quot;FOR<3_YOU_1-4&quot;/4.PNG" alt="" />
+                </div>
+                <div class="archive-stack__sheet" style="--z:2;--dx:8px;--dy:12px;--rot:5deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/ILLUSTRATIONs/10_&quot;FOR<3_YOU_1-4&quot;/3.PNG" alt="" />
+                </div>
+                <div class="archive-stack__sheet" style="--z:3;--dx:-6px;--dy:6px;--rot:-3deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/ILLUSTRATIONs/10_&quot;FOR<3_YOU_1-4&quot;/2.PNG" alt="" />
+                </div>
+                <div class="archive-stack__sheet" style="--z:4;--dx:5px;--dy:2px;--rot:4deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/ILLUSTRATIONs/10_&quot;FOR<3_YOU_1-4&quot;/1.PNG" alt="&quot;FOR<3_YOU_1-4&quot;" />
+                </div>
+              </div>
+              <div class="project-card__overlay">
+                <span class="project-card__title">"FOR<3_YOU_1-4"</span>
+                <span class="project-card__cat">Illustration</span>
+              </div>
+            </div>
+            <div class="project-card__meta"><span>"FOR<3_YOU_1-4"</span></div>
+          </a>
+        </li>
+
+        <li>
+          <a class="project-card project-card--stack" data-category="illustration" href="#"
+             data-gallery-images="MEDIA/ILLUSTRATIONs/11_&quot;INTERRUPTED_INTROVERSION&quot;/1.PNG,MEDIA/ILLUSTRATIONs/11_&quot;INTERRUPTED_INTROVERSION&quot;/2.PNG"
+             data-detail-year="2025">
+            <div class="project-card__media">
+              <div class="archive-stack" aria-hidden="true">
+                <div class="archive-stack__sheet" style="--z:1;--dx:-10px;--dy:18px;--rot:-7deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/ILLUSTRATIONs/11_&quot;INTERRUPTED_INTROVERSION&quot;/2.PNG" alt="" />
+                </div>
+                <div class="archive-stack__sheet" style="--z:2;--dx:8px;--dy:12px;--rot:5deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/ILLUSTRATIONs/11_&quot;INTERRUPTED_INTROVERSION&quot;/1.PNG" alt="&quot;INTERRUPTED_INTROVERSION&quot;" />
+                </div>
+              </div>
+              <div class="project-card__overlay">
+                <span class="project-card__title">"INTERRUPTED_INTROVERSION"</span>
+                <span class="project-card__cat">Illustration</span>
+              </div>
+            </div>
+            <div class="project-card__meta"><span>"INTERRUPTED_INTROVERSION"</span></div>
+          </a>
+        </li>
+
+        <li>
+          <a class="project-card project-card--stack" data-category="illustration" href="#"
+             data-gallery-images="MEDIA/ILLUSTRATIONs/12_&quot;TAKING_A_BITE&quot;/1.PNG,MEDIA/ILLUSTRATIONs/12_&quot;TAKING_A_BITE&quot;/2.PNG"
+             data-detail-year="2025">
+            <div class="project-card__media">
+              <div class="archive-stack" aria-hidden="true">
+                <div class="archive-stack__sheet" style="--z:1;--dx:-10px;--dy:18px;--rot:-7deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/ILLUSTRATIONs/12_&quot;TAKING_A_BITE&quot;/2.PNG" alt="" />
+                </div>
+                <div class="archive-stack__sheet" style="--z:2;--dx:8px;--dy:12px;--rot:5deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/ILLUSTRATIONs/12_&quot;TAKING_A_BITE&quot;/1.PNG" alt="&quot;TAKING_A_BITE&quot;" />
+                </div>
+              </div>
+              <div class="project-card__overlay">
+                <span class="project-card__title">"TAKING_A_BITE"</span>
+                <span class="project-card__cat">Illustration</span>
+              </div>
+            </div>
+            <div class="project-card__meta"><span>"TAKING_A_BITE"</span></div>
+          </a>
+        </li>
+
+        <li>
+          <a class="project-card project-card--stack" data-category="illustration" href="#"
+             data-gallery-images="MEDIA/ILLUSTRATIONs/13_&quot;SUBLIME_BEAUTY&quot;/1.PNG,MEDIA/ILLUSTRATIONs/13_&quot;SUBLIME_BEAUTY&quot;/2.PNG"
+             data-detail-year="2025">
+            <div class="project-card__media">
+              <div class="archive-stack" aria-hidden="true">
+                <div class="archive-stack__sheet" style="--z:1;--dx:-10px;--dy:18px;--rot:-7deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/ILLUSTRATIONs/13_&quot;SUBLIME_BEAUTY&quot;/2.PNG" alt="" />
+                </div>
+                <div class="archive-stack__sheet" style="--z:2;--dx:8px;--dy:12px;--rot:5deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/ILLUSTRATIONs/13_&quot;SUBLIME_BEAUTY&quot;/1.PNG" alt="&quot;SUBLIME_BEAUTY&quot;" />
+                </div>
+              </div>
+              <div class="project-card__overlay">
+                <span class="project-card__title">"SUBLIME_BEAUTY"</span>
+                <span class="project-card__cat">Illustration</span>
+              </div>
+            </div>
+            <div class="project-card__meta"><span>"SUBLIME_BEAUTY"</span></div>
+          </a>
+        </li>
+
+        <li>
+          <a class="project-card project-card--stack" data-category="illustration" href="#"
+             data-gallery-images="MEDIA/ILLUSTRATIONs/14_&quot;DOWN_TO_THE_BONE&quot;,/1.PNG,MEDIA/ILLUSTRATIONs/14_&quot;DOWN_TO_THE_BONE&quot;,/2.PNG"
+             data-detail-year="2025">
+            <div class="project-card__media">
+              <div class="archive-stack" aria-hidden="true">
+                <div class="archive-stack__sheet" style="--z:1;--dx:-10px;--dy:18px;--rot:-7deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/ILLUSTRATIONs/14_&quot;DOWN_TO_THE_BONE&quot;,/2.PNG" alt="" />
+                </div>
+                <div class="archive-stack__sheet" style="--z:2;--dx:8px;--dy:12px;--rot:5deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/ILLUSTRATIONs/14_&quot;DOWN_TO_THE_BONE&quot;,/1.PNG" alt="&quot;DOWN_TO_THE_BONE&quot;" />
+                </div>
+              </div>
+              <div class="project-card__overlay">
+                <span class="project-card__title">"DOWN_TO_THE_BONE"</span>
+                <span class="project-card__cat">Illustration</span>
+              </div>
+            </div>
+            <div class="project-card__meta"><span>"DOWN_TO_THE_BONE"</span></div>
+          </a>
+        </li>
+
+        <li>
+          <a class="project-card project-card--stack" data-category="illustration" href="#"
+             data-gallery-images="MEDIA/ILLUSTRATIONs/15_U_WANT_IT/1.PNG,MEDIA/ILLUSTRATIONs/15_U_WANT_IT/2.PNG"
+             data-detail-year="2025">
+            <div class="project-card__media">
+              <div class="archive-stack" aria-hidden="true">
+                <div class="archive-stack__sheet" style="--z:1;--dx:-10px;--dy:18px;--rot:-7deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/ILLUSTRATIONs/15_U_WANT_IT/2.PNG" alt="" />
+                </div>
+                <div class="archive-stack__sheet" style="--z:2;--dx:8px;--dy:12px;--rot:5deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/ILLUSTRATIONs/15_U_WANT_IT/1.PNG" alt='"U_WANT_IT?!"' />
+                </div>
+              </div>
+              <div class="project-card__overlay">
+                <span class="project-card__title">"U_WANT_IT?!"</span>
+                <span class="project-card__cat">Illustration</span>
+              </div>
+            </div>
+            <div class="project-card__meta"><span>"U_WANT_IT?!"</span></div>
+          </a>
+        </li><li class="archive-grid__section" data-archive-section="interaction">
+          <button type="button" class="archive-section-bar">Interaction Design</button>
+        </li>
+
+        <!-- INTERACTION -->
+        <li>
+          <a class="project-card" data-category="interaction" href="#"
+             data-gallery-images="MEDIA/INTERACTION/OPTICAL_PRIME/SIMULATION_thumb.jpg,MEDIA/INTERACTION/OPTICAL_PRIME/newspaper_01.jpg,MEDIA/INTERACTION/OPTICAL_PRIME/newspaper_02.jpg,MEDIA/INTERACTION/OPTICAL_PRIME/newspaper_03.jpg,MEDIA/INTERACTION/OPTICAL_PRIME/newspaper_04.jpg"
+             data-gallery-video="MEDIA/INTERACTION/OPTICAL_PRIME/SIMULATION.mp4"
+             data-detail-year="2025">
+            <div class="project-card__media">
+              <img class="project-card__img" loading="lazy" decoding="async"
+                   src="MEDIA/INTERACTION/OPTICAL_PRIME/SIMULATION_thumb.jpg" alt='"OPTICAL_PRIME"' />
+              <div class="project-card__overlay">
+                <span class="project-card__title">"OPTICAL_PRIME"</span>
+                <span class="project-card__cat">Interaction Design</span>
+              </div>
+            </div>
+            <div class="project-card__meta"><span>"OPTICAL_PRIME"</span></div>
+          </a>
+        </li>
+
+        <li>
+          <a class="project-card" data-category="interaction" href="#">
+            <div class="project-card__media">
+              <img class="project-card__img" loading="lazy" decoding="async" src="assets/projects/interaction-01.jpg" alt="Interactive prototype screen"
+                   onerror="this.outerHTML='<div class=&quot;project-card__placeholder&quot;>interaction · 01</div>'" />
+              <div class="project-card__overlay">
+                <span class="project-card__title">"Atlas Reader"</span>
+                <span class="project-card__cat">Interaction Design</span>
+              </div>
+            </div>
+            <div class="project-card__meta"><span>"Atlas Reader"</span></div>
+          </a>
+        </li>
+
+        <li>
+          <a class="project-card" data-category="interaction" href="#">
+            <div class="project-card__media">
+              <img class="project-card__img" loading="lazy" decoding="async" src="assets/projects/interaction-02.jpg" alt="UI exploration, archival tool"
+                   onerror="this.outerHTML='<div class=&quot;project-card__placeholder&quot;>interaction · 02</div>'" />
+              <div class="project-card__overlay">
+                <span class="project-card__title">"Field Notes OS"</span>
+                <span class="project-card__cat">Interaction Design</span>
+              </div>
+            </div>
+            <div class="project-card__meta"><span>"Field Notes OS"</span></div>
+          </a>
+        </li>
+
+        <li>
+          <a class="project-card" data-category="interaction" href="#">
+            <div class="project-card__media">
+              <img class="project-card__img" loading="lazy" decoding="async" src="assets/projects/interaction-03.jpg" alt="Mobile interface design"
+                   onerror="this.outerHTML='<div class=&quot;project-card__placeholder&quot;>interaction · 03</div>'" />
+              <div class="project-card__overlay">
+                <span class="project-card__title">"Pulse — Audio Diary"</span>
+                <span class="project-card__cat">Interaction Design</span>
+              </div>
+            </div>
+            <div class="project-card__meta"><span>"Pulse — Audio Diary"</span></div>
+          </a>
+        </li><li class="archive-grid__section" data-archive-section="graphic">
+          <button type="button" class="archive-section-bar">Graphic Design</button>
+        </li>
+
+        <!-- GRAPHIC -->
+        <li>
+          <a class="project-card project-card--stack" data-category="graphic" href="#"
+             data-gallery-images="MEDIA/GRAPHIC/CALENDAR/01_JANUARY.png,MEDIA/GRAPHIC/CALENDAR/02_FEBRUARY.jpg,MEDIA/GRAPHIC/CALENDAR/03_MARCH.jpg,MEDIA/GRAPHIC/CALENDAR/04_APRIL.png,MEDIA/GRAPHIC/CALENDAR/05_MAY.jpg,MEDIA/GRAPHIC/CALENDAR/06_JUNE.jpg,MEDIA/GRAPHIC/CALENDAR/07_JULY.jpg,MEDIA/GRAPHIC/CALENDAR/08_AUGUST.png,MEDIA/GRAPHIC/CALENDAR/09_SEPTEMBER.png,MEDIA/GRAPHIC/CALENDAR/10_OCTOBER.jpg,MEDIA/GRAPHIC/CALENDAR/11_NOVEMBER.png,MEDIA/GRAPHIC/CALENDAR/12_DECEMBER.png"
+             data-detail-year="2025">
+            <div class="project-card__media">
+              <div class="archive-stack" aria-hidden="true">
+                <div class="archive-stack__sheet" style="--z:1;--dx:-10px;--dy:18px;--rot:-7deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/GRAPHIC/CALENDAR/05_MAY.jpg" alt="" />
+                </div>
+                <div class="archive-stack__sheet" style="--z:2;--dx:8px;--dy:12px;--rot:5deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/GRAPHIC/CALENDAR/04_APRIL.png" alt="" />
+                </div>
+                <div class="archive-stack__sheet" style="--z:3;--dx:-6px;--dy:6px;--rot:-3deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/GRAPHIC/CALENDAR/03_MARCH.jpg" alt="" />
+                </div>
+                <div class="archive-stack__sheet" style="--z:4;--dx:5px;--dy:2px;--rot:4deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/GRAPHIC/CALENDAR/02_FEBRUARY.jpg" alt="" />
+                </div>
+                <div class="archive-stack__sheet" style="--z:5;--dx:-2px;--dy:-6px;--rot:-2deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/GRAPHIC/CALENDAR/01_JANUARY.png" alt="&quot;CALENDAR&quot;" />
+                </div>
+              </div>
+              <div class="project-card__overlay">
+                <span class="project-card__title">"CALENDAR"</span>
+                <span class="project-card__cat">Graphic Design</span>
+              </div>
+            </div>
+            <div class="project-card__meta"><span>"CALENDAR"</span></div>
+          </a>
+        </li>
+
+        <li>
+          <a class="project-card project-card--stack" data-category="graphic" href="#"
+             data-gallery-images="MEDIA/GRAPHIC/RATTÄ/0-787.jpg,MEDIA/GRAPHIC/RATTÄ/0-795.jpg,MEDIA/GRAPHIC/RATTÄ/0-819.jpg,MEDIA/GRAPHIC/RATTÄ/0-820.jpg,MEDIA/GRAPHIC/RATTÄ/0-821.jpg,MEDIA/GRAPHIC/RATTÄ/0-822.jpg,MEDIA/GRAPHIC/RATTÄ/0-823.jpg,MEDIA/GRAPHIC/RATTÄ/0-824.jpg"
+             data-detail-year="2025">
+            <div class="project-card__media">
+              <div class="archive-stack" aria-hidden="true">
+                <div class="archive-stack__sheet" style="--z:1;--dx:-8px;--dy:14px;--rot:-5deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/GRAPHIC/RATTÄ/0-822.jpg" alt="" />
+                </div>
+                <div class="archive-stack__sheet" style="--z:2;--dx:6px;--dy:10px;--rot:4deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/GRAPHIC/RATTÄ/0-820.jpg" alt="" />
+                </div>
+                <div class="archive-stack__sheet" style="--z:3;--dx:-4px;--dy:6px;--rot:-2deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/GRAPHIC/RATTÄ/0-819.jpg" alt="" />
+                </div>
+                <div class="archive-stack__sheet" style="--z:4;--dx:0px;--dy:0px;--rot:0deg">
+                  <img loading="lazy" decoding="async" src="MEDIA/GRAPHIC/RATTÄ/0-787.jpg" alt='"RATTÄ"' />
+                </div>
+              </div>
+              <div class="project-card__overlay">
+                <span class="project-card__title">"RATTÄ"</span>
+                <span class="project-card__cat">Graphic Design</span>
+              </div>
+            </div>
+            <div class="project-card__meta"><span>"RATTÄ"</span></div>
+          </a>
+        </li>
+
+        <li>
+          <a class="project-card" data-category="graphic" href="#">
+            <div class="project-card__media">
+              <img class="project-card__img" loading="lazy" decoding="async" src="assets/projects/graphic-01.jpg" alt="Editorial poster series"
+                   onerror="this.outerHTML='<div class=&quot;project-card__placeholder&quot;>graphic · 01</div>'" />
+              <div class="project-card__overlay">
+                <span class="project-card__title">"Sundays in Print"</span>
+                <span class="project-card__cat">Graphic Design</span>
+              </div>
+            </div>
+            <div class="project-card__meta"><span>"Sundays in Print"</span></div>
+          </a>
+        </li>
+
+        <li>
+          <a class="project-card" data-category="graphic" href="#">
+            <div class="project-card__media">
+              <img class="project-card__img" loading="lazy" decoding="async" src="assets/projects/graphic-02.jpg" alt="Type-led book cover"
+                   onerror="this.outerHTML='<div class=&quot;project-card__placeholder&quot;>graphic · 02</div>'" />
+              <div class="project-card__overlay">
+                <span class="project-card__title">"Quiet Codex"</span>
+                <span class="project-card__cat">Graphic Design</span>
+              </div>
+            </div>
+            <div class="project-card__meta"><span>"Quiet Codex"</span></div>
+          </a>
+        </li><li class="archive-grid__section" data-archive-section="art">
+          <button type="button" class="archive-section-bar">Art</button>
+        </li>
+
+        <!-- ART -->
+        <li>
+          <a class="project-card" data-category="art" href="#">
+            <div class="project-card__media">
+              <img class="project-card__img" loading="lazy" decoding="async" src="assets/projects/art-01.jpg" alt="Mixed-media painting on found paper"
+                   onerror="this.outerHTML='<div class=&quot;project-card__placeholder&quot;>art · 01</div>'" />
+              <div class="project-card__overlay">
+                <span class="project-card__title">"Cardiogram I"</span>
+                <span class="project-card__cat">Art</span>
+              </div>
+            </div>
+            <div class="project-card__meta"><span>"Cardiogram I"</span></div>
+          </a>
+        </li>
+
+        <li>
+          <a class="project-card" data-category="art" href="#">
+            <div class="project-card__media">
+              <img class="project-card__img" loading="lazy" decoding="async" src="assets/projects/art-02.jpg" alt="Acrylic study, abstract figure"
+                   onerror="this.outerHTML='<div class=&quot;project-card__placeholder&quot;>art · 02</div>'" />
+              <div class="project-card__overlay">
+                <span class="project-card__title">"Heart Studies"</span>
+                <span class="project-card__cat">Art</span>
+              </div>
+            </div>
+            <div class="project-card__meta"><span>"Heart Studies"</span></div>
+          </a>
+        </li><li class="archive-grid__section" data-archive-section="photography">
+          <button type="button" class="archive-section-bar">Videography</button>
+        </li>
+
+        <!-- PHOTOGRAPHY -->
+        <li>
+          <a class="project-card" data-category="photography" href="#"
+             data-gallery-video="MEDIA/VIDEOs/CIGARET.mp4"
+             data-detail-year="2025">
+            <div class="project-card__media">
+              <video class="project-card__img" src="MEDIA/VIDEOs/CIGARET.mp4" muted preload="metadata" playsinline></video>
+              <div class="project-card__overlay">
+                <span class="project-card__title">"CIGARET"</span>
+                <span class="project-card__cat">Videography</span>
+              </div>
+            </div>
+            <div class="project-card__meta"><span>"CIGARET"</span></div>
+          </a>
+        </li>
+
+        <li>
+          <a class="project-card" data-category="photography" href="#"
+             data-gallery-video="MEDIA/VIDEOs/LIGHT_AS_MATTER.mp4"
+             data-detail-year="2025">
+            <div class="project-card__media">
+              <video class="project-card__img" src="MEDIA/VIDEOs/LIGHT_AS_MATTER.mp4" muted preload="metadata" playsinline></video>
+              <div class="project-card__overlay">
+                <span class="project-card__title">"LIGHT_AS_MATTER"</span>
+                <span class="project-card__cat">Videography</span>
+              </div>
+            </div>
+            <div class="project-card__meta"><span>"LIGHT_AS_MATTER"</span></div>
+          </a>
+        </li>
+
+        <li>
+          <a class="project-card" data-category="photography" href="#"
+             data-gallery-video="MEDIA/VIDEOs/TRASH_TALKING.mp4"
+             data-detail-year="2025">
+            <div class="project-card__media">
+              <video class="project-card__img" src="MEDIA/VIDEOs/TRASH_TALKING.mp4" muted preload="metadata" playsinline></video>
+              <div class="project-card__overlay">
+                <span class="project-card__title">"TRASH_TALKING"</span>
+                <span class="project-card__cat">Videography</span>
+              </div>
+            </div>
+            <div class="project-card__meta"><span>"TRASH_TALKING"</span></div>
+          </a>
+        </li>
+
+        <li>
+          <a class="project-card" data-category="photography" href="#"
+             data-gallery-video="MEDIA/VIDEOs/NO_WATER-NO_TOMORROW.mp4"
+             data-detail-year="2025">
+            <div class="project-card__media">
+              <video class="project-card__img" src="MEDIA/VIDEOs/NO_WATER-NO_TOMORROW.mp4" muted preload="metadata" playsinline></video>
+              <div class="project-card__overlay">
+                <span class="project-card__title">"NO_WATER_NO_TOMORROW"</span>
+                <span class="project-card__cat">Videography</span>
+              </div>
+            </div>
+            <div class="project-card__meta"><span>"NO_WATER_NO_TOMORROW"</span></div>
+          </a>
+        </li>
+
+        <li>
+          <a class="project-card" data-category="photography" href="#"
+             data-gallery-video="MEDIA/VIDEOs/STUDENT_TAKEOVER.mp4"
+             data-detail-year="2025">
+            <div class="project-card__media">
+              <video class="project-card__img" src="MEDIA/VIDEOs/STUDENT_TAKEOVER.mp4" muted preload="metadata" playsinline></video>
+              <div class="project-card__overlay">
+                <span class="project-card__title">"STUDENT_TAKEOVER-DAY01"</span>
+                <span class="project-card__cat">Videography</span>
+              </div>
+            </div>
+            <div class="project-card__meta"><span>"STUDENT_TAKEOVER-DAY01"</span></div>
+          </a>
+        </li>
+
+        <li>
+          <a class="project-card" data-category="photography" href="#">
+            <div class="project-card__media">
+              <img class="project-card__img" loading="lazy" decoding="async" src="assets/projects/photography-01.jpg" alt="Black and white street photograph, Zürich"
+                   onerror="this.outerHTML='<div class=&quot;project-card__placeholder&quot;>photography · 01</div>'" />
+              <div class="project-card__overlay">
+                <span class="project-card__title">"Zürich, after rain"</span>
+                <span class="project-card__cat">Photography</span>
+              </div>
+            </div>
+            <div class="project-card__meta"><span>"Zürich, after rain"</span></div>
+          </a>
+        </li>
+
+        <li>
+          <a class="project-card" data-category="photography" href="#">
+            <div class="project-card__media">
+              <img class="project-card__img" loading="lazy" decoding="async" src="assets/projects/photography-02.jpg" alt="Portrait photograph"
+                   onerror="this.outerHTML='<div class=&quot;project-card__placeholder&quot;>photography · 02</div>'" />
+              <div class="project-card__overlay">
+                <span class="project-card__title">"Portraits of Strangers"</span>
+                <span class="project-card__cat">Photography</span>
+              </div>
+            </div>
+            <div class="project-card__meta"><span>"Portraits of Strangers"</span></div>
+          </a>
+        </li>
+
+        <li>
+          <a class="project-card" data-category="photography graphic" href="#">
+            <div class="project-card__media">
+              <img class="project-card__img" loading="lazy" decoding="async" src="assets/projects/photography-03.jpg" alt="Photo zine spread"
+                   onerror="this.outerHTML='<div class=&quot;project-card__placeholder&quot;>photo zine · 03</div>'" />
+              <div class="project-card__overlay">
+                <span class="project-card__title">"Untitled Zine №3"</span>
+                <span class="project-card__cat">Photo / Graphic Design</span>
+              </div>
+            </div>
+            <div class="project-card__meta"><span>"Untitled Zine №3"</span></div>
+          </a>
+        </li>
+
+      </ul>
+      </ul>
+    </div>
+  </main>
+
+  <template id="optical-prime-modal">
+    <div class="op-hero">
+      <video class="op-hero__video" autoplay muted loop playsinline>
+        <source src="MEDIA/INTERACTION/OPTICAL_PRIME/SIMULATION.mp4" type="video/mp4">
+        <source src="MEDIA/INTERACTION/OPTICAL_PRIME/SIMULATION.mov" type="video/quicktime">
+      </video>
+      <div class="op-hero__label">
+        <span class="op-hero__title">"OPTICAL_PRIME"</span>
+        <span class="op-hero__meta">2025 · Installation · Interactive · I-04</span>
+      </div>
+    </div>
+
+    <div class="op-body">
+      <div class="op-text">
+        <p class="op-text__p">This interactive project celebrated the 150th anniversary of the Museum für Gestaltung Zürich. Pedestrians could interact with these projections, and change the behaviour of the countdown.</p>
+        <p class="op-text__p op-text__p--credits">In cooperation with Finnja Krämer and Vanessa Mazzoleni.</p>
+      </div>
+
+      <div class="op-video-wrap">
+        <video class="op-video" autoplay muted controls playsinline>
+          <source src="MEDIA/INTERACTION/OPTICAL_PRIME/1.MP4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="op-press">
+        <div class="op-press-bar">
+          <span class="op-pdf-label">Press</span>
+        </div>
+        <div class="op-press-grid">
+          <img src="MEDIA/INTERACTION/OPTICAL_PRIME/newspaper_01.jpg" loading="lazy" alt="Press coverage page 1" class="op-press-grid__img">
+          <img src="MEDIA/INTERACTION/OPTICAL_PRIME/newspaper_02.jpg" loading="lazy" alt="Press coverage page 2" class="op-press-grid__img">
+          <img src="MEDIA/INTERACTION/OPTICAL_PRIME/newspaper_03.jpg" loading="lazy" alt="Press coverage page 3" class="op-press-grid__img">
+          <img src="MEDIA/INTERACTION/OPTICAL_PRIME/newspaper_04.jpg" loading="lazy" alt="Press coverage page 4" class="op-press-grid__img">
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template id="project-modal-default-body">
+    <figure class="project-modal__figure project-modal__figure--placeholder" aria-hidden="true">
+      <span class="project-modal__ph-label">Image placeholder</span>
+    </figure>
+    <div class="project-modal__copy">
+      <p class="project-modal__p">
+        Placeholder synopsis — short editorial description of the work, process,
+        and materials. Replace with project narrative.
+      </p>
+      <p class="project-modal__p">
+        Second paragraph placeholder for credits, collaboration, exhibition context,
+        or technical notes.
+      </p>
+    </div>
+    <figure class="project-modal__figure project-modal__figure--placeholder" aria-hidden="true">
+      <span class="project-modal__ph-label">Image placeholder</span>
+    </figure>
+    <div class="project-modal__video-slot" aria-hidden="true">
+      <span class="project-modal__ph-label">Video placeholder</span>
+    </div>
+  </template>
+
+  <div
+    class="project-modal-root"
+    id="project-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="project-modal-title"
+    hidden
+  >
+    <button
+      type="button"
+      class="project-modal__backdrop"
+      data-modal-dismiss
+      aria-label="Close project overlay"
+      tabindex="-1"
+    ></button>
+    <div class="project-modal__panel">
+      <button type="button" class="project-modal__close" data-modal-dismiss aria-label="Close">&times;</button>
+      <header class="project-modal__head">
+        <h2 id="project-modal-title" class="project-modal__title" data-modal-title>"Project"</h2>
+        <p class="project-modal__cat" data-modal-cat></p>
+        <p class="project-modal__meta-line" data-modal-meta></p>
+      </header>
+      <div class="project-modal__scroll" data-modal-scroll>
+        <div class="project-modal__body" data-modal-body></div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <span>hearthead – ozzy</span>
+      <span class="site-footer__center">© <span class="year-mirror" id="year">2025</span> hearthead – ozzy. All rights reserved.</span>
+      <span class="site-footer__right">Archive · Vol. II</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="pb-projects.js"></script>
+</body>
+</html>
