@@ -69,8 +69,12 @@
     const rawTitle = rec.title ?? '';
     const safeTitle = esc(rawTitle); // for attributes / screen readers
     const breakTitle = insertBreaks(safeTitle); // visible title with break opportunities
-    const files     = rec.gallery ?? [];
-    const videoUrl  = rec.video ?? '';
+    const files        = rec.gallery ?? [];
+    const rawVideoUrl  = rec.video ?? '';
+    // PocketBase file fields return plain filenames (no slash); convert to API URL
+    const videoUrl = rawVideoUrl && !rawVideoUrl.includes('/')
+      ? pbFile(rec.id, rawVideoUrl)
+      : rawVideoUrl;
     const isStack   = rec.layout === 'gallery' && files.length > 1;
     const isVideo   = rec.layout === 'video';
     const fileUrls  = files.map((fn) => pbFile(rec.id, fn));

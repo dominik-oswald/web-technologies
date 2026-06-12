@@ -2001,6 +2001,54 @@ body.page--landing {
   color: var(--color-bg);
 }
 
+/* Project prev / next navigation — sit at viewport edges, above the modal overlay */
+.project-modal__nav {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  /* Must be higher than .project-modal-root (100000) because position:fixed
+     children escape the parent stacking context into the initial one */
+  z-index: 100002;
+  width: 44px;
+  height: 44px;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  cursor: pointer;
+  border: 2px solid var(--color-ink);
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-mono);
+  display: grid;
+  place-items: center;
+  transition: background 0.15s ease, color 0.15s ease;
+  pointer-events: auto;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.project-modal__nav[hidden] {
+  display: none !important;
+}
+.project-modal__nav:hover {
+  background: var(--color-ink);
+  color: var(--color-bg);
+}
+/* Default mode: sit just outside the 1040px panel with ~8px gap */
+.project-modal__nav--prev {
+  left: max(4px, calc(50% - min(520px, 50vw - 16px) - 52px));
+}
+.project-modal__nav--next {
+  right: max(4px, calc(50% - min(520px, 50vw - 16px) - 52px));
+}
+/* Gallery mode: panel is 100vw-200px (100px margins) — center button in that gap.
+   Buttons are siblings that follow the modal root, so use ~ selector. */
+.project-modal-root.project-modal--gallery-mode ~ .project-modal__nav--prev {
+  left: 28px;
+}
+.project-modal-root.project-modal--gallery-mode ~ .project-modal__nav--next {
+  right: 28px;
+}
+
 .project-modal__head {
   padding: 22px 52px 18px 18px;
   border-bottom: 2px solid var(--color-ink);
@@ -2034,9 +2082,9 @@ body.page--landing {
   color: var(--color-muted);
 }
 
-/* Gallery modal */
+/* Gallery modal — 100px side margins leave clear room for << >> nav buttons */
 .project-modal-root.project-modal--gallery-mode .project-modal__panel {
-  max-width: calc(100vw - 24px);
+  max-width: calc(100vw - 200px);
   max-height: min(96vh, 1060px);
 }
 
@@ -2052,7 +2100,7 @@ body.page--landing {
 @media (min-width: 721px) {
   .project-modal-root.project-modal--gallery-mode .project-modal__panel {
     height: min(96vh, 1060px);
-    max-width: calc(100vw - 24px);
+    max-width: calc(100vw - 200px);
   }
 
   .project-modal-root.project-modal--gallery-mode .project-modal__scroll {

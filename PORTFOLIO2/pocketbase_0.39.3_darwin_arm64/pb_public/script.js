@@ -258,10 +258,10 @@
         speed > 0.02 ? ((-velY / speed) * amp * 0.65) : 0;
       const oy =
         speed > 0.02 ? ((velX / speed) * amp * 0.65) : 0;
-      swayX += (ox - swayX) * 0.16;
-      swayY += (oy - swayY) * 0.16;
-      outerSwayX += (-ox * 1.25 - outerSwayX) * 0.11;
-      outerSwayY += (-oy * 1.25 - outerSwayY) * 0.11;
+      swayX += (ox - swayX) * 0.55;
+      swayY += (oy - swayY) * 0.55;
+      outerSwayX += (-ox * 1.25 - outerSwayX) * 0.45;
+      outerSwayY += (-oy * 1.25 - outerSwayY) * 0.45;
 
       if (speed > 2) {
         const targetDeg = (Math.atan2(velY, velX) * 180) / Math.PI;
@@ -271,13 +271,13 @@
       }
       const rotApply = Math.max(-16, Math.min(16, ringRot * 0.2));
 
-      const dotEase = 0.18;
+      const dotEase = 0.72;
       dotX += (mouseX - dotX) * dotEase;
       dotY += (mouseY - dotY) * dotEase;
       dot.style.transform =
         `translate3d(${dotX - swayX * 0.35}px, ${dotY - swayY * 0.35}px, 0) translate(-50%, -50%)`;
 
-      const ringEase = 0.17;
+      const ringEase = 0.65;
       ringX += (mouseX - ringX) * ringEase;
       ringY += (mouseY - ringY) * ringEase;
       ring.style.transform =
@@ -285,7 +285,7 @@
         `rotate(${rotApply}deg) scale(${breathe}) translate(-50%, -50%)`;
 
       if (ringOuter) {
-        const outerEase = 0.11;
+        const outerEase = 0.55;
         outerX += (mouseX - outerX) * outerEase;
         outerY += (mouseY - outerY) * outerEase;
         const outerBreath = 1 + Math.sin(now * 0.006 + 1.1) * 0.05;
@@ -844,6 +844,21 @@
     const modalBody = projectModal.querySelector('[data-modal-body]');
     const defaultModalBodyTpl = document.getElementById('project-modal-default-body');
     const defaultBodyHTML = defaultModalBodyTpl ? defaultModalBodyTpl.innerHTML : '';
+    const prevProjectBtn = document.querySelector('.project-modal__nav--prev');
+    const nextProjectBtn = document.querySelector('.project-modal__nav--next');
+
+    let currentCardEl = null;
+
+    const getVisibleCards = () =>
+      Array.from(archiveGrid.querySelectorAll('.project-card:not(.hidden)'));
+
+    const syncNavBtns = () => {
+      if (!prevProjectBtn || !nextProjectBtn) return;
+      const cards = getVisibleCards();
+      const idx = currentCardEl ? cards.indexOf(currentCardEl) : -1;
+      prevProjectBtn.hidden = idx <= 0;
+      nextProjectBtn.hidden = idx < 0 || idx >= cards.length - 1;
+    };
 
     if (modalBody && defaultBodyHTML) modalBody.innerHTML = defaultBodyHTML;
 
@@ -1190,6 +1205,9 @@
         galleryModalCleanup();
         galleryModalCleanup = null;
       }
+      currentCardEl = null;
+      if (prevProjectBtn) prevProjectBtn.hidden = true;
+      if (nextProjectBtn) nextProjectBtn.hidden = true;
       document.body.style.overflow = '';
       projectModal.classList.remove('project-modal--gallery-mode');
       projectModal.setAttribute('aria-labelledby', 'project-modal-title');
@@ -1619,6 +1637,8 @@
         }
       }
 
+      currentCardEl = card;
+      syncNavBtns();
       openProjectModal();
 
       requestAnimationFrame(() => {
@@ -1640,6 +1660,37 @@
       e.preventDefault();
       openFromCard(card);
     });
+
+    if (prevProjectBtn) {
+      prevProjectBtn.addEventListener('click', () => {
+        const cards = getVisibleCards();
+        const idx = currentCardEl ? cards.indexOf(currentCardEl) : -1;
+        if (idx > 0) openFromCard(cards[idx - 1]);
+      });
+    }
+    if (nextProjectBtn) {
+      nextProjectBtn.addEventListener('click', () => {
+        const cards = getVisibleCards();
+        const idx = currentCardEl ? cards.indexOf(currentCardEl) : -1;
+        if (idx >= 0 && idx < cards.length - 1) openFromCard(cards[idx + 1]);
+      });
+    }
+
+    // Arrow-key project navigation (only when no lightbox is open)
+    document.addEventListener('keydown', (e) => {
+      if (projectModal.hidden) return;
+      if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+      if (document.activeElement?.matches?.('input,textarea,select,[contenteditable]')) return;
+      const openLightbox = projectModal.querySelector(
+        '.project-modal__gallery-lightbox:not([hidden])'
+      );
+      if (openLightbox) return;
+      e.preventDefault();
+      const cards = getVisibleCards();
+      const idx = currentCardEl ? cards.indexOf(currentCardEl) : -1;
+      if (e.key === 'ArrowLeft' && idx > 0) openFromCard(cards[idx - 1]);
+      if (e.key === 'ArrowRight' && idx >= 0 && idx < cards.length - 1) openFromCard(cards[idx + 1]);
+    }, true);
 
     closeProjectModal(true);
   }
