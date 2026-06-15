@@ -86,7 +86,7 @@
       } else {
         const ytM = vidUrl.match(/(?:[?&]v=|youtu\.be\/|\/embed\/|\/shorts\/)([A-Za-z0-9_-]{11})/);
         if (ytM) {
-          mediaSrc = `https://img.youtube.com/vi/${ytM[1]}/hqdefault.jpg`;
+          mediaSrc = `https://img.youtube.com/vi/${ytM[1]}/mqdefault.jpg`;
         } else if (vidUrl) {
           mediaSrc = vidUrl;
           isLocalVid = true;

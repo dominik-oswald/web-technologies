@@ -1586,6 +1586,12 @@ body.page--landing {
   border-color: transparent transparent transparent rgba(13, 13, 13, 0.85);
 }
 
+/* Collapsed state: arrow points right (section hidden), bar stays dark */
+.archive-section-bar--collapsed::after {
+  transform: rotate(0deg);
+  border-color: transparent transparent transparent rgba(255, 255, 255, 0.92);
+}
+
 .archive-section-bar:hover {
   filter: brightness(1.04);
 }
@@ -1697,6 +1703,24 @@ body.page--landing {
   border-top: 0;
 }
 
+/* Portrait video card — taller cell, no letterbox background */
+.project-card--portrait-video .project-card__media {
+  aspect-ratio: 9 / 16;
+  background: var(--color-ink);
+}
+
+.project-card--portrait-video .project-card__img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* Archive grid: all cards stay 4/5 — portrait format only appears in the modal */
+#archive-grid .project-card--portrait-video .project-card__media {
+  aspect-ratio: 4 / 5;
+  background: var(--color-bg);
+}
+
 .project-card__overlay {
   display: none;
 }
@@ -1721,7 +1745,7 @@ body.page--landing {
 /* Allow titles to wrap naturally, prefer breaking at inserted ZWSPs */
 .project-card__title {
   /* slightly smaller title for project cards */
-  font-size: clamp(11px, 2.0vmin, 13px);
+  font-size: clamp(11px, 2vmin, 13px);
   white-space: normal;
   overflow-wrap: anywhere;
 }
@@ -1933,6 +1957,16 @@ body.page--landing {
   box-sizing: border-box;
 }
 
+@media (max-width: 540px) {
+  .project-modal-root {
+    padding: 0;
+  }
+  .project-modal-root .project-modal__panel {
+    max-width: 100vw;
+    width: 100vw;
+  }
+}
+
 .project-modal__backdrop {
   position: fixed;
   inset: 0;
@@ -2021,7 +2055,9 @@ body.page--landing {
   font-family: var(--font-mono);
   display: grid;
   place-items: center;
-  transition: background 0.15s ease, color 0.15s ease;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
   pointer-events: auto;
   user-select: none;
   -webkit-user-select: none;
@@ -2179,6 +2215,14 @@ body.page--landing {
     aspect-ratio: 16 / 9;
     display: block;
     border: none;
+  }
+
+  .project-modal__gallery-video--portrait {
+    aspect-ratio: 9 / 16;
+    width: auto;
+    max-height: min(88vh, 900px);
+    max-width: 100%;
+    margin: 0 auto;
   }
 
   /* Hero image + thumbnail strip */
@@ -2563,10 +2607,92 @@ body.page--landing {
 
 /* ---- Mobile: gallery + videography modal ---- */
 @media (max-width: 720px) {
-  /* Panel fills almost full screen */
+  /* Hide project prev/next nav arrows on mobile */
+  .project-modal__nav {
+    display: none !important;
+  }
+
+  /* Hide image carousel and hero prev/next buttons on mobile */
+  .project-modal__hero-nav,
+  .project-modal__carousel-btn {
+    display: none !important;
+  }
+
+  /* Full-screen modal on mobile */
+  .project-modal-root {
+    padding: 0;
+  }
+
+  .project-modal-root .project-modal__panel {
+    max-width: 100vw;
+    width: 100vw;
+    max-height: 100dvh;
+    height: 100dvh;
+  }
+
+  .project-modal__scroll {
+    flex: 1 1 auto;
+    min-height: 0;
+  }
+
+  /* Panel: no border/shadow — acts as a native page */
+  .project-modal-root .project-modal__panel {
+    border: none;
+    box-shadow: none;
+  }
+
+  /* Close button → in-flow back arrow pinned to top of panel */
+  .project-modal__close {
+    position: relative;
+    top: auto;
+    right: auto;
+    order: -1;
+    flex-shrink: 0;
+    width: 100%;
+    height: 48px;
+    font-size: 0;
+    border: none;
+    border-bottom: 2px solid var(--color-ink);
+    background: var(--color-bg);
+    color: var(--color-ink);
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    gap: 10px;
+    justify-content: flex-start;
+  }
+
+  .project-modal__close::before {
+    content: '←';
+    font-size: 20px;
+    line-height: 1;
+    color: inherit;
+  }
+
+  .project-modal__close::after {
+    content: 'BACK';
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: inherit;
+  }
+
+  .project-modal__close:hover {
+    background: var(--color-ink);
+    color: var(--color-bg);
+  }
+
+  /* Head: no extra right padding (× button is gone on mobile) */
+  .project-modal__head {
+    padding: 22px 16px 18px;
+  }
+
+  /* Panel fills full screen */
   .project-modal-root.project-modal--gallery-mode .project-modal__panel {
-    height: calc(100dvh - 32px);
-    max-height: calc(100dvh - 32px);
+    height: 100dvh;
+    max-height: 100dvh;
+    max-width: 100vw;
+    width: 100vw;
     overflow: hidden;
   }
 
@@ -2605,7 +2731,7 @@ body.page--landing {
     flex-shrink: 0;
     border-right: none;
     border-bottom: 2px solid var(--color-ink);
-    padding: 14px 56px 14px 16px;
+    padding: 14px 16px 14px 14px;
     max-height: 36vh;
     overflow-y: auto;
     display: flex;
@@ -3242,7 +3368,7 @@ body.page--landing {
 
 @media (max-width: 540px) {
   .project-modal__head {
-    padding-right: 56px;
+    padding-right: 16px;
   }
 }
 
@@ -3261,7 +3387,7 @@ body.page--landing {
    ========================================================== */
 
 .about {
-  padding: 16px 0 96px;
+  padding: 16px 0 0;
 }
 
 .about__grid {
@@ -3459,11 +3585,11 @@ body.page--landing {
 .section-divider {
   height: 2px;
   background: var(--color-ink);
-  margin: 64px 0 0;
+  margin: 0;
 }
 
 .meta-strip--section {
-  margin-top: 64px;
+  margin-top: 0;
 }
 
 #contact.contact {
@@ -3740,5 +3866,207 @@ body.cursor-pressed .cursor-dot {
   }
   .landing__ascii {
     display: none;
+  }
+}
+
+/* ==========================================================
+   CONTACT COMPOSE (Gmail-style bottom-right popup)
+   ========================================================== */
+
+.contact-modal {
+  position: fixed;
+  bottom: 0;
+  right: 24px;
+  z-index: 1000;
+  width: 520px;
+  max-width: calc(100vw - 32px);
+}
+
+.contact-modal[hidden] {
+  display: none;
+}
+
+.contact-modal__panel {
+  background: var(--color-bg);
+  border: 2px solid var(--color-ink);
+  border-bottom: none;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 40px rgba(13, 13, 13, 0.22);
+}
+
+/* Header bar — dark, like Gmail's compose header */
+.contact-modal__header {
+  background: var(--color-ink);
+  color: var(--color-bg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px 10px 16px;
+  cursor: pointer;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.contact-modal__title {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-bg);
+  font-weight: 500;
+}
+
+.contact-modal__header-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.contact-modal__btn {
+  background: none;
+  border: none;
+  color: var(--color-bg);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 2px 6px;
+  opacity: 0.7;
+  transition: opacity 0.15s ease;
+  pointer-events: auto;
+}
+.contact-modal__btn:hover {
+  opacity: 1;
+}
+
+/* Form body */
+.contact-modal__body {
+  padding: 0;
+  max-height: 420px;
+  overflow-y: auto;
+  transition: max-height 0.22s ease;
+}
+
+.contact-modal--minimised .contact-modal__body {
+  max-height: 0;
+  overflow: hidden;
+}
+
+/* Form */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form__field {
+  border-bottom: 1px solid rgba(13, 13, 13, 0.14);
+}
+
+.contact-form__field--inline {
+  display: flex;
+  align-items: baseline;
+  gap: 0;
+}
+
+.contact-form__label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  flex-shrink: 0;
+  padding: 10px 12px;
+  min-width: 52px;
+}
+
+.contact-form__input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 10px 12px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--color-ink);
+  outline: none;
+  box-sizing: border-box;
+}
+.contact-form__input::placeholder {
+  color: rgba(13, 13, 13, 0.3);
+}
+
+/* Message textarea — no label row, fills body */
+.contact-form__input--message {
+  display: block;
+  width: 100%;
+  min-height: 260px;
+  resize: none;
+  padding: 14px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.55;
+  border: none;
+  background: transparent;
+  color: var(--color-ink);
+  outline: none;
+  box-sizing: border-box;
+}
+.contact-form__input--message::placeholder {
+  color: rgba(13, 13, 13, 0.3);
+}
+
+/* Footer: send button + status */
+.contact-form__footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px 12px;
+  border-top: 1px solid rgba(13, 13, 13, 0.1);
+}
+
+.contact-form__submit {
+  background: var(--color-ink);
+  color: var(--color-bg);
+  border: none;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 9px 18px;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+  flex-shrink: 0;
+}
+.contact-form__submit:hover {
+  opacity: 0.78;
+}
+.contact-form__submit:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.contact-form__status {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  flex: 1;
+  min-height: 0;
+}
+.contact-form__status--ok {
+  color: #2a7a2a;
+}
+.contact-form__status--error {
+  color: #b00;
+}
+
+/* Mobile: full-width at bottom */
+@media (max-width: 480px) {
+  .contact-modal {
+    right: 0;
+    left: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+  .contact-modal__panel {
+    border-left: none;
+    border-right: none;
   }
 }

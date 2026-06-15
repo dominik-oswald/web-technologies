@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About & Contact · hearthead – ozzy</title>
+  <meta name="description" content="About Dominik Oswald — interaction designer & multidisciplinary artist based in Zürich." />
+  <link rel="icon" href="IMG_1195.PNG" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <div class="site-header__lead">
+        <a class="site-home brand" href="index.html" aria-label="hearthead – ozzy, home">
+          <svg class="site-home__icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <g fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 4.5 L17.5 11.5 L6.5 11.5 Z" />
+              <path d="M6.5 11.5 V20.5 H17.5 V11.5" />
+              <path d="M6.5 11.5 L17.5 20.5 M17.5 11.5 L6.5 20.5" />
+            </g>
+          </svg>
+          <span>hearthead&nbsp;–&nbsp;ozzy</span>
+        </a>
+      </div>
+
+      <nav class="primary-nav" aria-label="Primary">
+        <ul class="primary-nav__list">
+          <li><a class="primary-nav__link" data-nav href="projects.html">Archive</a></li>
+          <li><a class="primary-nav__link" data-nav href="about.html">About</a></li>
+        </ul>
+      </nav>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
+        <span class="nav-toggle__bar" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <ul class="mobile-nav__list">
+      <li><a class="mobile-nav__link" data-nav href="projects.html" data-num="01">Archive</a></li>
+      <li><a class="mobile-nav__link" data-nav href="about.html" data-num="02">About</a></li>
+    </ul>
+  </div>
+
+  <main class="main" id="main">
+    <div class="container">
+      <div class="meta-strip" aria-hidden="true">
+        <span>Index № 02 — About</span>
+        <span>Subject: D. Oswald</span>
+        <span>File 02 of 03</span>
+        <span>Last updated · 2026</span>
+      </div>
+
+      <section class="about">
+        <div class="about__grid">
+
+          <figure class="about__portrait" aria-label="Portrait placeholder">
+            <img data-about-portrait src="assets/projects/portrait.jpg" alt="Portrait of Dominik Oswald"
+                 style="width:100%;height:100%;object-fit:cover;"
+                 onerror="this.outerHTML='<span class=\'about__portrait-label\'>Portrait · place IMG here</span>'" />
+          </figure>
+
+          <div class="about__body">
+            <h1 class="about__heading" data-about-heading>Dominik Oswald — @hearthead.ozzy</h1>
+
+            <p class="about__lede" data-about-lede>
+              I'm a Zürich-based interaction design student and work multidisciplinary.
+              Art, graphic design, illustration, photography, and videography are all under my umbrella of practice.
+            </p>
+
+            <div class="about__copy" data-about-copy>
+              <p>
+                My work sits between research and personal practice — I treat each project
+                as an entry in an ongoing archive. I'm drawn to dense type, archival
+                aesthetics, raw paper, ink that bleeds slightly, interfaces that feel
+                like reading rooms, and small details that betray a human hand.
+              </p>
+              <p>
+                Currently studying interaction design while taking freelance commissions
+                in editorial design, illustration and product UI. Available for
+                collaborations, commissions and slow conversations.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"></div>
+
+      <section class="contact" id="contact">
+        <div class="meta-strip meta-strip--section" aria-hidden="true">
+          <span>Index № 03 — Contact</span>
+          <span>Channels: 02</span>
+          <span>Response: 24–72h</span>
+          <span>Status: Available</span>
+        </div>
+
+        <div class="contact__grid">
+          <h2 class="contact__heading">
+            Let's<br />
+            work<br />
+            together<span class="accent">.</span>
+          </h2>
+
+          <ul class="contact__links" aria-label="Contact links">
+            <li>
+              <a class="contact__link" data-about-email href="mailto:hello@dominik-oswald.ch" data-contact-trigger>
+                <span class="contact__link__label">01 · Email</span>
+                <span class="contact__link__value">hello@dominik-oswald.ch</span>
+                <span class="contact__link__arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+            <li>
+              <a class="contact__link" data-about-instagram href="https://www.instagram.com/hearthead.ozzy/" target="_blank" rel="noopener noreferrer">
+                <span class="contact__link__label">02 · Instagram</span>
+                <span class="contact__link__value">@hearthead.ozzy</span>
+                <span class="contact__link__arrow" aria-hidden="true">↗</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <p class="contact__note">Available for freelance — Zürich &amp; Remote</p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <span>hearthead – ozzy</span>
+      <span class="site-footer__center">© <span class="year-mirror" id="year">2025</span> hearthead – ozzy. All rights reserved.</span>
+      <span class="site-footer__right">About · Vol. II</span>
+    </div>
+  </footer>
+
+  <!-- Contact compose popup (Gmail-style) -->
+  <div class="contact-modal" id="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title" hidden>
+    <div class="contact-modal__panel">
+      <div class="contact-modal__header" data-contact-minimize>
+        <span class="contact-modal__title" id="contact-modal-title">New Message</span>
+        <div class="contact-modal__header-actions">
+          <button type="button" class="contact-modal__btn" data-contact-minimize aria-label="Minimise">−</button>
+          <button type="button" class="contact-modal__btn" data-contact-close aria-label="Close">×</button>
+        </div>
+      </div>
+      <div class="contact-modal__body">
+        <form class="contact-form" id="contact-form" novalidate>
+          <div class="contact-form__field contact-form__field--inline">
+            <label class="contact-form__label" for="cf-name">From</label>
+            <input class="contact-form__input" id="cf-name" name="name" type="text" autocomplete="name" required placeholder="Your name" />
+          </div>
+          <div class="contact-form__field contact-form__field--inline">
+            <label class="contact-form__label" for="cf-email">Email</label>
+            <input class="contact-form__input" id="cf-email" name="email" type="email" autocomplete="email" required placeholder="your@email.com" />
+          </div>
+          <div class="contact-form__field">
+            <textarea class="contact-form__input contact-form__input--message" id="cf-message" name="message" required placeholder="Write your message…"></textarea>
+          </div>
+          <div class="contact-form__footer">
+            <button class="contact-form__submit" type="submit">Send →</button>
+            <div class="contact-form__status" aria-live="polite" aria-atomic="true"></div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="pb-about.js"></script>
+  <script>
+    (() => {
+      const modal  = document.getElementById('contact-modal');
+      const form   = document.getElementById('contact-form');
+      const status = form?.querySelector('.contact-form__status');
+
+      const openModal = (e) => {
+        e.preventDefault();
+        if (!modal) return;
+        modal.hidden = false;
+        modal.classList.remove('contact-modal--minimised');
+        modal.querySelector('input')?.focus();
+      };
+
+      const closeModal = () => {
+        if (!modal) return;
+        modal.hidden = true;
+        modal.classList.remove('contact-modal--minimised');
+      };
+
+      const toggleMinimise = (e) => {
+        // Don't minimise when the close button was clicked inside the header
+        if (e.target.closest('[data-contact-close]')) return;
+        modal?.classList.toggle('contact-modal--minimised');
+      };
+
+      document.querySelectorAll('[data-contact-trigger]').forEach((el) =>
+        el.addEventListener('click', openModal)
+      );
+
+      document.querySelectorAll('[data-contact-close]').forEach((el) =>
+        el.addEventListener('click', closeModal)
+      );
+
+      // Header click → minimise/maximise; individual [data-contact-minimize] buttons too
+      modal?.querySelector('.contact-modal__header')?.addEventListener('click', toggleMinimise);
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal?.hidden) {
+          if (modal.classList.contains('contact-modal--minimised')) {
+            modal.classList.remove('contact-modal--minimised');
+          } else {
+            closeModal();
+          }
+        }
+      });
+
+      form?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!status) return;
+
+        const data = {
+          name:    form.querySelector('[name="name"]')?.value?.trim(),
+          email:   form.querySelector('[name="email"]')?.value?.trim(),
+          message: form.querySelector('[name="message"]')?.value?.trim(),
+        };
+
+        if (!data.name || !data.email || !data.message) {
+          status.textContent = 'Please fill in all fields.';
+          status.className = 'contact-form__status contact-form__status--error';
+          return;
+        }
+
+        const submitBtn = form.querySelector('.contact-form__submit');
+        submitBtn.disabled = true;
+        status.textContent = 'Sending…';
+        status.className = 'contact-form__status';
+
+        try {
+          const res = await fetch('/api/collections/messages/records', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+            credentials: 'same-origin',
+          });
+          if (res.ok) {
+            status.textContent = 'Message sent — I\'ll be in touch.';
+            status.className = 'contact-form__status contact-form__status--ok';
+            form.reset();
+          } else {
+            throw new Error('Server error');
+          }
+        } catch {
+          const mailto = `mailto:hello@dominik-oswald.ch?subject=Message from ${encodeURIComponent(data.name)}&body=${encodeURIComponent(data.message + '\n\n' + data.email)}`;
+          window.location.href = mailto;
+          closeModal();
+        } finally {
+          submitBtn.disabled = false;
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

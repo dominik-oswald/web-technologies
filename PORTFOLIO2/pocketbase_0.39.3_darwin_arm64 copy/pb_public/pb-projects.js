@@ -115,9 +115,7 @@
       } else if (ytId) {
         // maxresdefault (1280×720) when available; onload checks naturalWidth to detect the
         // 120×90 "no HD thumbnail" placeholder YouTube returns instead of a 404, then falls back.
-        mediaHTML = `<img class="project-card__img" loading="lazy" decoding="async" src="https://img.youtube.com/vi/${ytId}/maxresdefault.jpg" alt="${safeTitle}" onload="if(this.naturalWidth<=120)this.src='https://img.youtube.com/vi/${ytId}/hqdefault.jpg'" onerror="this.src='https://img.youtube.com/vi/${ytId}/hqdefault.jpg'">`;
-      } else if (videoUrl) {
-        mediaHTML = `<video class="project-card__img" src="${esc(videoUrl)}" muted preload="metadata" playsinline></video>`;
+        mediaHTML = `<img class="project-card__img" loading="lazy" decoding="async" src="https://img.youtube.com/vi/${ytId}/maxresdefault.jpg" alt="${safeTitle}" onload="if(this.naturalWidth<=120)this.src='https://img.youtube.com/vi/${ytId}/mqdefault.jpg'" onerror="this.src='https://img.youtube.com/vi/${ytId}/mqdefault.jpg'">`;
       } else {
         mediaHTML = `<div class="project-card__placeholder">${esc(catLabel)}</div>`;
       }

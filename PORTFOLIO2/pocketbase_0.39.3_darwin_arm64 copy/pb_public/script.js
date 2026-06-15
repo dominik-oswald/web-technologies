@@ -42,75 +42,45 @@
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ----------------------------------------------------------
-     0b. Thumbnail videos — seek to a random frame on load
+     0b. Thumbnail videos — seek to random frame + portrait detection
      ---------------------------------------------------------- */
-  document.querySelectorAll('video[preload="metadata"]').forEach((vid) => {
+  const initVideoMeta = (vid) => {
     const seek = () => {
       if (vid.duration && isFinite(vid.duration)) {
         vid.currentTime = Math.random() * Math.max(0, vid.duration - 15);
       }
     };
+    const detectPortrait = () => {
+      if (vid.videoHeight > vid.videoWidth) {
+        const card = vid.closest('.project-card');
+        if (card) card.classList.add('project-card--portrait-video');
+      }
+    };
     if (vid.readyState >= 1) {
       seek();
+      detectPortrait();
     } else {
-      vid.addEventListener('loadedmetadata', seek, { once: true });
+      vid.addEventListener('loadedmetadata', () => { seek(); detectPortrait(); }, { once: true });
     }
-  });
+  };
+
+  // Only apply random-frame seek to stack-card videos (landing page),
+  // never to project-card thumbnails in the archive grid.
+  document.querySelectorAll('.stack-card video[preload="metadata"]').forEach(initVideoMeta);
 
   /* ----------------------------------------------------------
-     0c. Videography cards — play on hover, pause on leave
+     0c. Portrait detection for YouTube Shorts cards
      Called once at startup and again after PocketBase grid rebuild.
      ---------------------------------------------------------- */
-  const initVideoHover = (root) => {
-    // Local <video> cards — play on hover, pause on leave
-    root.querySelectorAll('.project-card__img').forEach((vid) => {
-      if (vid.tagName !== 'VIDEO') return;
-      const card = vid.closest('.project-card');
-      if (!card || card._videoHoverInit) return;
-      card._videoHoverInit = true;
-      card.addEventListener('mouseenter', () => { vid.play().catch(() => {}); });
-      card.addEventListener('mouseleave', () => { vid.pause(); });
-    });
-
-    // YouTube cards — inject muted autoplay iframe on hover, remove on leave
+  const initVideoPortrait = (root) => {
     root.querySelectorAll('.project-card').forEach((card) => {
-      if (card._ytHoverInit) return;
       const videoUrl = card.dataset.galleryVideo || '';
-      // match regular YT, youtu.be, embed, AND /shorts/ URLs
-      const ytMatch = videoUrl.match(/(?:[?&]v=|youtu\.be\/|\/embed\/|\/shorts\/)([A-Za-z0-9_-]{11})/);
-      if (!ytMatch) return;
-      card._ytHoverInit = true;
-      const ytId = ytMatch[1];
-      const isPortrait = videoUrl.includes('/shorts/');
-      const tMatch = videoUrl.match(/[?&]t=(\d+)/);
-      const startSec = tMatch ? parseInt(tMatch[1], 10) : 0;
-      const embedSrc = `https://www.youtube.com/embed/${ytId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${ytId}&modestbranding=1&start=${startSec}`;
-      const media = card.querySelector('.project-card__media');
-      if (!media) return;
-
-      let frame = null;
-      let hoverTimer = null;
-      card.addEventListener('mouseenter', () => {
-        hoverTimer = setTimeout(() => {
-          if (frame) return;
-          frame = document.createElement('iframe');
-          frame.className = 'project-card__yt-frame' + (isPortrait ? ' project-card__yt-frame--portrait' : '');
-          frame.setAttribute('allow', 'autoplay; fullscreen');
-          frame.setAttribute('frameborder', '0');
-          frame.src = embedSrc;
-          media.appendChild(frame);
-        }, 250); // only load iframe after deliberate hover, not accidental mouse-overs
-      });
-      card.addEventListener('mouseleave', () => {
-        clearTimeout(hoverTimer);
-        if (!frame) return;
-        const f = frame;
-        frame = null;
-        setTimeout(() => { f.src = ''; f.remove(); }, 300);
-      });
+      if (videoUrl.includes('/shorts/') || videoUrl.includes('shorts/')) {
+        card.classList.add('project-card--portrait-video');
+      }
     });
   };
-  initVideoHover(document);
+  initVideoPortrait(document);
 
   /* ----------------------------------------------------------
      1. Year
@@ -763,8 +733,36 @@
 
   const archiveGridEl = document.querySelector('#archive-grid');
 
+  // Tracks which sections are manually collapsed in "all" view
+  const collapsedSections = new Set();
+
+  const applyCollapse = (category) => {
+    if (!archiveGridEl) return;
+    archiveGridEl.querySelectorAll('.archive-grid__section').forEach((row) => {
+      const sec = row.dataset.archiveSection;
+      const bar = row.querySelector('.archive-section-bar');
+      const isCollapsed = category === 'all' && collapsedSections.has(sec);
+      if (bar) bar.classList.toggle('archive-section-bar--collapsed', isCollapsed);
+
+      // Hide/show sibling li elements belonging to this section
+      let sibling = row.nextElementSibling;
+      while (sibling && !sibling.classList.contains('archive-grid__section')) {
+        const card = sibling.querySelector('.project-card');
+        // hide if collapsed; but respect the filter — only hide visible (non-hidden) cards
+        const isHiddenByFilter = card && card.classList.contains('hidden');
+        if (!isHiddenByFilter) {
+          sibling.style.display = isCollapsed ? 'none' : '';
+        }
+        sibling = sibling.nextElementSibling;
+      }
+    });
+  };
+
   const applyFilter = (category, updateUrl = false) => {
     if (!filterBar) return;
+    // Reset collapsed state when switching away from "all"
+    if (category !== 'all') collapsedSections.clear();
+
     const cards = document.querySelectorAll('.project-card');
     filterBar.querySelectorAll('.filter-bar__btn').forEach((b) =>
       b.classList.toggle('active', b.dataset.filter === category)
@@ -774,6 +772,9 @@
       const cats = (card.dataset.category || '').split(/\s+/);
       const show = category === 'all' || cats.includes(category);
       card.classList.toggle('hidden', !show);
+      // Reset collapse inline style so filter works cleanly
+      const li = card.closest('li');
+      if (li) li.style.display = '';
       if (show) visible++;
     });
     document.querySelectorAll('.archive-grid__section').forEach((row) => {
@@ -784,7 +785,8 @@
       );
       const bar = row.querySelector('.archive-section-bar');
       if (bar && sec) {
-        bar.classList.toggle('archive-section-bar--active', category === sec);
+        bar.classList.remove('archive-section-bar--active');
+        bar.classList.remove('archive-section-bar--collapsed');
       }
     });
     if (archiveGridEl) archiveGridEl.dataset.activeFilter = category;
@@ -794,6 +796,8 @@
         : `${window.location.pathname}?cat=${encodeURIComponent(category)}`;
       history.replaceState(null, '', url);
     }
+    // Re-apply collapse state if we're in "all" view
+    if (category === 'all') applyCollapse('all');
     updateCount(visible);
   };
 
@@ -812,13 +816,31 @@
     if (validBtn) applyFilter(cat);
     else applyFilter('all');
 
-    // Section-bar clicks — use event delegation so dynamically-added bars work too
+    // Section-bar clicks: in "all" view → collapse/expand; in filtered view → no-op
     if (archiveGridEl) {
       archiveGridEl.addEventListener('click', (e) => {
         const bar = e.target.closest('.archive-section-bar');
         if (!bar) return;
-        const sec = bar.closest('.archive-grid__section')?.dataset.archiveSection;
-        if (sec) applyFilter(sec, true);
+        e.preventDefault();
+        e.stopPropagation();
+        const row = bar.closest('.archive-grid__section');
+        const sec = row?.dataset.archiveSection;
+        if (!sec) return;
+        const currentFilter = archiveGridEl.dataset.activeFilter ?? 'all';
+        if (currentFilter !== 'all') return; // only collapse in "all" view
+        if (collapsedSections.has(sec)) {
+          collapsedSections.delete(sec);
+        } else {
+          collapsedSections.add(sec);
+        }
+        applyCollapse('all');
+        // Recount visible cards
+        let visible = 0;
+        document.querySelectorAll('.project-card').forEach((card) => {
+          const li = card.closest('li');
+          if (!card.classList.contains('hidden') && li && li.style.display !== 'none') visible++;
+        });
+        updateCount(visible);
       });
     }
   }
@@ -1566,6 +1588,9 @@
             voIframe.setAttribute('allowfullscreen', '');
             voIframe.setAttribute('frameborder', '0');
             voIframe.className = 'project-modal__gallery-video';
+            if (voVideoSrc.includes('/shorts/')) {
+              voIframe.classList.add('project-modal__gallery-video--portrait');
+            }
             voStage.appendChild(voIframe);
             voWrap.append(voHeader, voStage);
             modalBody.appendChild(voWrap);
@@ -1745,7 +1770,7 @@
   document.addEventListener('pb:projects-loaded', () => {
     const grid = document.getElementById('archive-grid');
     if (!grid) return;
-    initVideoHover(grid);
+    initVideoPortrait(grid);
     initCardTilt(grid);
     // Re-apply the currently active filter so counts update and
     // hidden/visible classes are set correctly on the new cards.
