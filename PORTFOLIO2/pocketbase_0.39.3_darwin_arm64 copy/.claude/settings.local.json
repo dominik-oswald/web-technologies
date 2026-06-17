@@ -13,7 +13,7 @@
       "Bash(curl -s \"http://127.0.0.1:8090/api/collections/projects/records?perPage=1&sort=+sort,+created&filter=\\(layout='video'\\)\")",
       "Bash(node --check /Users/dominikraphaeloswald/Desktop/CACHE/\\\\[2026\\\\]/pocketbase-portfolio/pocketbase_0.39.3_darwin_arm64/pb_public/pb-projects.js)",
       "Bash(node --check /Users/dominikraphaeloswald/Desktop/CACHE/\\\\[2026\\\\]/pocketbase-portfolio/pocketbase_0.39.3_darwin_arm64/pb_public/script.js)",
-      "Bash(curl -s -X POST http://127.0.0.1:8090/api/collections/_superusers/auth-with-password -H 'Content-Type: application/json' -d '{\"identity\":\"dominikph.oswald@gmail.com\",\"password\":\"%dR9T&jYTPFKzc4H!3BZgva04\"}')",
+      "Bash(curl -s -X POST http://127.0.0.1:8090/api/collections/_superusers/auth-with-password -H 'Content-Type: application/json' -d '{\"identity\":\""\",\"password\":\""}')",
       "Bash(rm /Users/dominikraphaeloswald/Desktop/CACHE/\\\\[2026\\\\]/pocketbase-portfolio/pocketbase_0.39.3_darwin_arm64/pb_public/contact.html)",
       "Bash(node -e ' *)",
       "Bash(grep -n \"project-modal__panel\\\\|project-modal-root\\\\|max-width\\\\|padding.*0$\\\\|padding: 0\" /Users/dominikraphaeloswald/Desktop/CACHE/\\\\[2026\\\\]/pocketbase-portfolio/pocketbase_0.39.3_darwin_arm64/pb_public/style.css)",
